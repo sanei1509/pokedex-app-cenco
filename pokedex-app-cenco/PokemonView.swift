@@ -7,24 +7,28 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PokemonView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color(.yellow).ignoresSafeArea(.all)
-                VStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("Pokedex WIP!!")
+                Color(.white).ignoresSafeArea(.all)
+                //POKEMON CARD
+                ZStack{
+                    Text("Pokemon Name".uppercased())
+                        .bold().foregroundColor(.white)
+                        .font(.title)
+                    
                 }
-                .padding()
+                .padding(/*@START_MENU_TOKEN@*/.all, 30.0/*@END_MENU_TOKEN@*/)
+                .background(.green)
+                .shadow(color: .green, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 0.0, y:0.0)
                 .navigationTitle("Listado")
+                
             }
         }
     }
 }
 
 #Preview {
-    ContentView()
+    PokemonView()
 }

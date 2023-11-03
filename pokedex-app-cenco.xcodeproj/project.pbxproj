@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */; };
-		FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0772AF56C7000AEA53E /* ContentView.swift */; };
+		FBD0A0782AF56C7000AEA53E /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0772AF56C7000AEA53E /* PokemonView.swift */; };
 		FBD0A07A2AF56C7400AEA53E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A0792AF56C7400AEA53E /* Assets.xcassets */; };
 		FBD0A07D2AF56C7400AEA53E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A07C2AF56C7400AEA53E /* Preview Assets.xcassets */; };
+		FBD0A0862AF582DA00AEA53E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A0852AF582DA00AEA53E /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FBD0A0722AF56C7000AEA53E /* pokedex-app-cenco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pokedex-app-cenco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedex_app_cencoApp.swift; sourceTree = "<group>"; };
-		FBD0A0772AF56C7000AEA53E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FBD0A0772AF56C7000AEA53E /* PokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonView.swift; sourceTree = "<group>"; };
 		FBD0A0792AF56C7400AEA53E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBD0A07C2AF56C7400AEA53E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FBD0A0852AF582DA00AEA53E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +54,10 @@
 			isa = PBXGroup;
 			children = (
 				FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */,
-				FBD0A0772AF56C7000AEA53E /* ContentView.swift */,
+				FBD0A0772AF56C7000AEA53E /* PokemonView.swift */,
 				FBD0A0792AF56C7400AEA53E /* Assets.xcassets */,
 				FBD0A07B2AF56C7400AEA53E /* Preview Content */,
+				FBD0A0852AF582DA00AEA53E /* Launch Screen.storyboard */,
 			);
 			path = "pokedex-app-cenco";
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD0A0862AF582DA00AEA53E /* Launch Screen.storyboard in Resources */,
 				FBD0A07D2AF56C7400AEA53E /* Preview Assets.xcassets in Resources */,
 				FBD0A07A2AF56C7400AEA53E /* Assets.xcassets in Resources */,
 			);
@@ -137,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */,
+				FBD0A0782AF56C7000AEA53E /* PokemonView.swift in Sources */,
 				FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +282,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -307,6 +312,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
