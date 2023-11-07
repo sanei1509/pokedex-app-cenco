@@ -16,10 +16,18 @@ struct ListadoPokemon: View {
         NavigationView{
             ScrollView{
                 LazyVGrid(columns: columnasGrid, spacing: 20.0){
-                    ForEach(PokemonList){ pokemon in
-                        PokemonCard(pokemon: pokemon)
+//                    ForEach(PokemonList){ pokemon in
+//                        PokemonCard(pokemon: pokemon)
+//                    }
+                    Text("Hola").onAppear{
+                        PokeApi().getData() { pokemon in
+                            print(pokemon)
+                            for pokemon in pokemon {
+                                print(pokemon.name)
+
+                            }
+                        }
                     }
-                    
                 }
             }.navigationTitle("Listado")
         }

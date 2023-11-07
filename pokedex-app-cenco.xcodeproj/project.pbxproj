@@ -8,19 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */; };
-		FBD0A0782AF56C7000AEA53E /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0772AF56C7000AEA53E /* PokemonView.swift */; };
+		FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0772AF56C7000AEA53E /* ContentView.swift */; };
 		FBD0A07A2AF56C7400AEA53E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A0792AF56C7400AEA53E /* Assets.xcassets */; };
 		FBD0A07D2AF56C7400AEA53E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A07C2AF56C7400AEA53E /* Preview Assets.xcassets */; };
 		FBD0A0862AF582DA00AEA53E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A0852AF582DA00AEA53E /* Launch Screen.storyboard */; };
+		FBD0A0882AF7E76100AEA53E /* PokemonListado.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0872AF7E76100AEA53E /* PokemonListado.swift */; };
+		FBD0A08A2AF920F700AEA53E /* PokemonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0892AF920F700AEA53E /* PokemonCard.swift */; };
+		FBD0A08E2AF9226C00AEA53E /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A08D2AF9226C00AEA53E /* Pokemon.swift */; };
+		FBD0A0912AF92D8300AEA53E /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0902AF92D8300AEA53E /* PokemonViewModel.swift */; };
+		FBD0A0932AF9B38200AEA53E /* PokemonDetalle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0922AF9B38200AEA53E /* PokemonDetalle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FBD0A0722AF56C7000AEA53E /* pokedex-app-cenco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pokedex-app-cenco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedex_app_cencoApp.swift; sourceTree = "<group>"; };
-		FBD0A0772AF56C7000AEA53E /* PokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonView.swift; sourceTree = "<group>"; };
+		FBD0A0772AF56C7000AEA53E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FBD0A0792AF56C7400AEA53E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBD0A07C2AF56C7400AEA53E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FBD0A0852AF582DA00AEA53E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FBD0A0872AF7E76100AEA53E /* PokemonListado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListado.swift; sourceTree = "<group>"; };
+		FBD0A0892AF920F700AEA53E /* PokemonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCard.swift; sourceTree = "<group>"; };
+		FBD0A08D2AF9226C00AEA53E /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		FBD0A0902AF92D8300AEA53E /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
+		FBD0A0922AF9B38200AEA53E /* PokemonDetalle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetalle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +63,11 @@
 		FBD0A0742AF56C7000AEA53E /* pokedex-app-cenco */ = {
 			isa = PBXGroup;
 			children = (
+				FBD0A08F2AF92D6400AEA53E /* ViewModel */,
+				FBD0A08C2AF9225100AEA53E /* Model */,
+				FBD0A08B2AF9223100AEA53E /* View */,
 				FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */,
-				FBD0A0772AF56C7000AEA53E /* PokemonView.swift */,
+				FBD0A0772AF56C7000AEA53E /* ContentView.swift */,
 				FBD0A0792AF56C7400AEA53E /* Assets.xcassets */,
 				FBD0A07B2AF56C7400AEA53E /* Preview Content */,
 				FBD0A0852AF582DA00AEA53E /* Launch Screen.storyboard */,
@@ -68,6 +81,32 @@
 				FBD0A07C2AF56C7400AEA53E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FBD0A08B2AF9223100AEA53E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FBD0A0892AF920F700AEA53E /* PokemonCard.swift */,
+				FBD0A0872AF7E76100AEA53E /* PokemonListado.swift */,
+				FBD0A0922AF9B38200AEA53E /* PokemonDetalle.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FBD0A08C2AF9225100AEA53E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FBD0A08D2AF9226C00AEA53E /* Pokemon.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FBD0A08F2AF92D6400AEA53E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FBD0A0902AF92D8300AEA53E /* PokemonViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBD0A0782AF56C7000AEA53E /* PokemonView.swift in Sources */,
+				FBD0A08E2AF9226C00AEA53E /* Pokemon.swift in Sources */,
+				FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */,
+				FBD0A0932AF9B38200AEA53E /* PokemonDetalle.swift in Sources */,
+				FBD0A0912AF92D8300AEA53E /* PokemonViewModel.swift in Sources */,
 				FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */,
+				FBD0A08A2AF920F700AEA53E /* PokemonCard.swift in Sources */,
+				FBD0A0882AF7E76100AEA53E /* PokemonListado.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
