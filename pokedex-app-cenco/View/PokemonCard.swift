@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct PokemonCard: View {
-//    let pokemon:Pokemon2
+    let pokemon : Pokemon
 //    @ObservedObject var viewModel = PokemonViewModel()
     var body: some View {
         ZStack{
@@ -16,12 +16,12 @@ struct PokemonCard: View {
             ZStack{
                 VStack{
                     //llamo a la clase pokemon
-                    Text("pokemon.name".uppercased())
+                    Text("name pokemon".uppercased())
                         .bold().foregroundColor(.white)
                         .font(.headline)
                     HStack{
                         // types / type ./name
-                        Text("Pokemon.type")
+                        Text("fire")
                             .font(.caption)
                             .foregroundColor(.white)
                             .bold()
@@ -33,6 +33,15 @@ struct PokemonCard: View {
                         Image("1").resizable()
                             .scaledToFit()
                             .frame(width: 80, height: 80)
+//                        AsyncImage(url: pokemon.imageUrl) { image in
+//                            image.resizable()
+//                        } placeholder: {
+//                            Image(systemName: "number")
+//                                .resizable()
+//                                .padding()
+//                        }
+//                        .aspectRatio(contentMode: .fit)
+//                        .frame(width: 100)
                     }
                 }
             }
@@ -40,7 +49,7 @@ struct PokemonCard: View {
             .padding(.bottom, 10)
             .padding(.horizontal, 8)
             .background(Color(.green/*backgroundColor(forType: pokemon.type)*/))
-            .cornerRadius(20)
+            .cornerRadius(18)
             .shadow(color: Color(.green)/*Color(backgroundColor(forType: pokemon.type))*/, radius: 10, x: 0.0, y:0.0)
         }
     }
@@ -50,8 +59,8 @@ struct PokemonCard: View {
 struct PokemonCard_preview: PreviewProvider {
     static var previews: some View{
         Group {
-//            PokemonCard(pokemon: PokemonList[1])
-            PokemonCard()
+//            PokemonCard(pokemon: Pokemon())
+            PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/5/"))
         }.previewLayout(.fixed(width: 200, height: 200))
     }
 }

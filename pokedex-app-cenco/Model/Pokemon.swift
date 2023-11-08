@@ -11,23 +11,35 @@
 import Foundation
 import SwiftUI
 
-
-//struct Pokemon2: Decodable, Identifiable{
-//    let id:Int
-//    let name:String
-//    let imageUrl:String
-//    let type: String
-//    let description:String
-//    let height:Int
-//    let weight:Int
-//}
+struct PokemonList: Decodable {
+    
+    let results: [Pokemon]
+}
 
 
-struct Pokemon: Codable{
-    var count: Int
-    var next: String
-    var previous: String?
-    var results: [PokemonEntry]
+struct PokemonResponse: Codable {
+    let count: Int
+    let next: String
+    let previous: String?
+    let results: [Pokemon]
+}
+
+struct Pokemon: Codable {
+    var id: Int?
+    var name: String
+    var url: String
+    
+//    var id: Int? {
+//        return Int(url.split(separator: "/").last?.description ?? "0")
+//    }
+    
+//    var imageUrl: URL? {
+//        if let id = self.id {
+//            return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(id).png")
+//        }
+//        return nil
+//    }
+    
 }
 
 
@@ -58,51 +70,49 @@ func backgroundColor(forType type:String)-> UIColor{
     }
 }
 
-struct PokemonEntry: Codable, Identifiable {
-    var id: Int?
-    var name: String
-    var url: String
 
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case url
-    }
+//class PokeApi {
+//    //vamos a traer una colección de pokemones
+//    func getData(completion: @escaping ([PokemonEntry]) -> ()){
+//        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=50") else {return}
+//            
+//        URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            guard let data = data else { return }
+//            // Crear una instancia de JSONDecoder
+//            let decoder = JSONDecoder()
+//
+//            do {
+//                // Llamar al método 'decode' en la instancia de JSONDecoder
+//                let pokemonList = try decoder.decode(Pokemon.self, from: data)
+//                
+//                DispatchQueue.main.async {
+//                    completion(pokemonList.results)
+//                }
+//            } catch {
+//                // Maneja errores de decodificación aquí
+//                print("Error al decodificar JSON: \(error)")
+//            }
+//            
+//            
+//
+//        }.resume()
+//    }
+//}
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        // Intenta decodificar el campo "id" si está presente en el JSON
-        id = try? container.decode(Int.self, forKey: .id)
-        name = try container.decode(String.self, forKey: .name)
-        url = try container.decode(String.self, forKey: .url)
-    }
-}
-
-class PokeApi {
-    //vamos a traer una colección de pokemones
-    func getData(completion: @escaping ([PokemonEntry]) -> ()){
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=50") else {return}
-            
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            // Crear una instancia de JSONDecoder
-            let decoder = JSONDecoder()
-
-            do {
-                // Llamar al método 'decode' en la instancia de JSONDecoder
-                let pokemonList = try decoder.decode(Pokemon.self, from: data)
-                
-                DispatchQueue.main.async {
-                    completion(pokemonList.results)
-                }
-            } catch {
-                // Maneja errores de decodificación aquí
-                print("Error al decodificar JSON: \(error)")
-            }
-            
-            
-
-        }.resume()
-    }
-}
+//final class PokemonApi {
+//    
+//    func loadPokemon(completion: @escaping (Result<[Pokemon], Error>) -> ())  {
+//        
+//        AF.request("https://pokeapi.co/api/v2/pokemon?limit=151").responseDecodable(of: PokemonList.self) { response in
+//            
+//            switch response.result {
+//            case .success(let pokemonList):
+//                completion(.success(pokemonList.results))
+//            case .failure(let error):
+//                completion(.failure(error))
+//            }
+//        }
+//    }
+//    
+//}

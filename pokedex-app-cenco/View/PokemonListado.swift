@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ListadoPokemon: View {
+    @StateObject var datosJson = PokemonViewModel()
     private let columnasGrid = [GridItem(.flexible()), GridItem(.flexible())]
-//    let pokemon = Pokemon()
-    //    @ObservedObject var viewModel = PokemonViewModel()
     
     var body: some View {
         NavigationView{
@@ -19,12 +18,14 @@ struct ListadoPokemon: View {
 //                    ForEach(PokemonList){ pokemon in
 //                        PokemonCard(pokemon: pokemon)
 //                    }
-                    Text("Hola").onAppear{
-                        PokeApi().getData() { pokemon in
-                            print(pokemon)
-                            for pokemon in pokemon {
-                                print(pokemon.name)
-
+                    //Listado de datos
+                    if datosJson.pokemonDatos.isEmpty {
+                        ProgressView()
+                    }else{
+                        List(datosJson.pokemonDatos, id:\.id) { pokemon in
+                            VStack(alignment: .leading){
+                                Text("Hola")
+                                Text(pokemon.name)
                             }
                         }
                     }

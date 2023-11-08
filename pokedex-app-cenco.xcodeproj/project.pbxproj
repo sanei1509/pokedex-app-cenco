@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB2A985D2AFAE03E00B026D7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FB2A985C2AFAE03E00B026D7 /* Alamofire */; };
+		FB2A98602AFB108A00B026D7 /* PokeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2A985F2AFB108A00B026D7 /* PokeApi.swift */; };
+		FBCD29582AFA81D700B6FBE2 /* PokemonSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD29572AFA81D700B6FBE2 /* PokemonSelected.swift */; };
 		FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */; };
 		FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0772AF56C7000AEA53E /* ContentView.swift */; };
 		FBD0A07A2AF56C7400AEA53E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A0792AF56C7400AEA53E /* Assets.xcassets */; };
@@ -20,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB2A985F2AFB108A00B026D7 /* PokeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeApi.swift; sourceTree = "<group>"; };
+		FBCD29572AFA81D700B6FBE2 /* PokemonSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelected.swift; sourceTree = "<group>"; };
 		FBD0A0722AF56C7000AEA53E /* pokedex-app-cenco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pokedex-app-cenco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedex_app_cencoApp.swift; sourceTree = "<group>"; };
 		FBD0A0772AF56C7000AEA53E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,12 +43,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB2A985D2AFAE03E00B026D7 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB2A985E2AFB107E00B026D7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FB2A985F2AFB108A00B026D7 /* PokeApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		FBD0A0692AF56C7000AEA53E = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +77,7 @@
 		FBD0A0742AF56C7000AEA53E /* pokedex-app-cenco */ = {
 			isa = PBXGroup;
 			children = (
+				FB2A985E2AFB107E00B026D7 /* API */,
 				FBD0A08F2AF92D6400AEA53E /* ViewModel */,
 				FBD0A08C2AF9225100AEA53E /* Model */,
 				FBD0A08B2AF9223100AEA53E /* View */,
@@ -97,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				FBD0A08D2AF9226C00AEA53E /* Pokemon.swift */,
+				FBCD29572AFA81D700B6FBE2 /* PokemonSelected.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +141,9 @@
 			dependencies = (
 			);
 			name = "pokedex-app-cenco";
+			packageProductDependencies = (
+				FB2A985C2AFAE03E00B026D7 /* Alamofire */,
+			);
 			productName = "pokedex-app-cenco";
 			productReference = FBD0A0722AF56C7000AEA53E /* pokedex-app-cenco.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +172,9 @@
 				Base,
 			);
 			mainGroup = FBD0A0692AF56C7000AEA53E;
+			packageReferences = (
+				FB2A985B2AFAE03E00B026D7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = FBD0A0732AF56C7000AEA53E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -182,6 +204,8 @@
 			files = (
 				FBD0A08E2AF9226C00AEA53E /* Pokemon.swift in Sources */,
 				FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */,
+				FBCD29582AFA81D700B6FBE2 /* PokemonSelected.swift in Sources */,
+				FB2A98602AFB108A00B026D7 /* PokeApi.swift in Sources */,
 				FBD0A0932AF9B38200AEA53E /* PokemonDetalle.swift in Sources */,
 				FBD0A0912AF92D8300AEA53E /* PokemonViewModel.swift in Sources */,
 				FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */,
@@ -394,6 +418,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FB2A985B2AFAE03E00B026D7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FB2A985C2AFAE03E00B026D7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB2A985B2AFAE03E00B026D7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FBD0A06A2AF56C7000AEA53E /* Project object */;
 }

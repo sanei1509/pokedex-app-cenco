@@ -9,28 +9,23 @@ import SwiftUI
 import Foundation
 
 class PokemonViewModel:ObservableObject{
-    @Published var pokemon = [Pokemon]()
-    let baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"
+    @Published var pokemonDatos: [Pokemon] = []
+    let baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=50"
     init() {
         fetchPokemon()
     }
     func fetchPokemon(){
         guard let url = URL(string: baseUrl) else {return}
         
-        URLSession.shared.dataTask(with: url){(data, response, error) in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            guard let pokemon = try? JSONDecoder().decode([Pokemon].self, from: data) else {return}
-            DispatchQueue.main.async {
-                self.pokemon = pokemon
+        URLSession.shared.dataTask(with: url){data,_,_ in
+            guard let data = data else { return }
+            do{
+                let response = try JSONDecoder().decode(PokemonResponse.self, from: data)
+                DispatchQueue.main.async {
+                    self.pokemonDatos = response.results
+                }
+            }catch let error as NSError{
+                print("Error en la extracción del JSON", error.localizedDescription)
             }
         }.resume()
     }
