@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct PokemonCard: View {
+    @StateObject var datosJson = PokemonViewModel()
     let pokemon : Pokemon
 //    @ObservedObject var viewModel = PokemonViewModel()
     var body: some View {
@@ -16,7 +17,7 @@ struct PokemonCard: View {
             ZStack{
                 VStack{
                     //llamo a la clase pokemon
-                    Text("name pokemon".uppercased())
+                    Text(pokemon.name.uppercased())
                         .bold().foregroundColor(.white)
                         .font(.headline)
                     HStack{
@@ -33,15 +34,6 @@ struct PokemonCard: View {
                         Image("1").resizable()
                             .scaledToFit()
                             .frame(width: 80, height: 80)
-//                        AsyncImage(url: pokemon.imageUrl) { image in
-//                            image.resizable()
-//                        } placeholder: {
-//                            Image(systemName: "number")
-//                                .resizable()
-//                                .padding()
-//                        }
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 100)
                     }
                 }
             }
@@ -56,11 +48,11 @@ struct PokemonCard: View {
 }
 
 
-struct PokemonCard_preview: PreviewProvider {
-    static var previews: some View{
-        Group {
-//            PokemonCard(pokemon: Pokemon())
-            PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/5/"))
-        }.previewLayout(.fixed(width: 200, height: 200))
-    }
-}
+//struct PokemonCard_preview: PreviewProvider {
+//    static var previews: some View{
+//        Group {
+////            PokemonCard(pokemon: Pokemon())
+//            PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/5/"))
+//        }.previewLayout(.fixed(width: 200, height: 200))
+//    }
+//}

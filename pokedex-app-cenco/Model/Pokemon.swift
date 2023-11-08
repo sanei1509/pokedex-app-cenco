@@ -12,10 +12,8 @@ import Foundation
 import SwiftUI
 
 struct PokemonList: Decodable {
-    
     let results: [Pokemon]
 }
-
 
 struct PokemonResponse: Codable {
     let count: Int
@@ -25,13 +23,11 @@ struct PokemonResponse: Codable {
 }
 
 struct Pokemon: Codable {
-    var id: Int?
     var name: String
     var url: String
-    
-//    var id: Int? {
-//        return Int(url.split(separator: "/").last?.description ?? "0")
-//    }
+    var id: Int? {
+        return Int(url.split(separator: "/").last?.description ?? "0")
+    }
     
 //    var imageUrl: URL? {
 //        if let id = self.id {

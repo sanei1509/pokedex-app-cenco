@@ -11,9 +11,11 @@ import Foundation
 class PokemonViewModel:ObservableObject{
     @Published var pokemonDatos: [Pokemon] = []
     let baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=50"
+    
     init() {
         fetchPokemon()
     }
+    
     func fetchPokemon(){
         guard let url = URL(string: baseUrl) else {return}
         
@@ -24,11 +26,46 @@ class PokemonViewModel:ObservableObject{
                 DispatchQueue.main.async {
                     self.pokemonDatos = response.results
                 }
+                
+                //imprimir datos obtenidoss
+                for item in response.results{
+                    print(item)
+                }
             }catch let error as NSError{
                 print("Error en la extracción del JSON", error.localizedDescription)
             }
         }.resume()
     }
+    
+//    func fetchPokemonDetail(pokemon: Pokemon, completion: @escaping (Pokemon) -> Void) {
+//        guard let detailURL = URL(string: pokemon.url) else {
+//            completion(pokemon)
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: detailURL) { data, _, error in
+//            if let error = error {
+//                print("Error en la solicitud de detalles:", error)
+//                completion(pokemon)
+//                return
+//            }
+//
+//            if let data = data {
+//                var updatedPokemon = pokemon // Hacer una copia mutable
+//                do {
+//                    let pokemonDetail = try JSONDecoder().decode(PokemonDetail.self, from: data)
+//                    // Actualizar los detalles del Pokémon
+//                    updatedPokemon.details = pokemonDetail
+//                    completion(updatedPokemon)
+//                } catch let error as NSError {
+//                    print("Error al parsear los detalles:", error.localizedDescription)
+//                    completion(pokemon)
+//                }
+//            }
+//        }.resume()
+//    }
+
+    
 
     func backgroundColor(forType type:String)-> UIColor{
         switch type{
@@ -45,16 +82,4 @@ class PokemonViewModel:ObservableObject{
         }
     }
     
-    
-}
-extension Data {
-    func parseData(removeString string:String) -> Data?{
-        let dataString = String(data:self, encoding: .utf8)
-        let parsedDataString = dataString?.replacingOccurrences(of: string, with: "")
-        guard let data = parsedDataString?.data(using: .utf8) else {
-            return nil
-        }
-        return data
-    
-    }
 }

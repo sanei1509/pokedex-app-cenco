@@ -15,17 +15,14 @@ struct ListadoPokemon: View {
         NavigationView{
             ScrollView{
                 LazyVGrid(columns: columnasGrid, spacing: 20.0){
-//                    ForEach(PokemonList){ pokemon in
-//                        PokemonCard(pokemon: pokemon)
-//                    }
                     //Listado de datos
                     if datosJson.pokemonDatos.isEmpty {
                         ProgressView()
                     }else{
-                        List(datosJson.pokemonDatos, id:\.id) { pokemon in
+                        ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
                             VStack(alignment: .leading){
-                                Text("Hola")
                                 Text(pokemon.name)
+                                Text(pokemon.url)
                             }
                         }
                     }
