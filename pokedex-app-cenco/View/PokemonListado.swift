@@ -21,8 +21,7 @@ struct ListadoPokemon: View {
                     }else{
                         ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
                             VStack(alignment: .leading){
-                                Text(pokemon.name)
-                                Text(pokemon.url)
+                                PokemonCard(pokemon: pokemon)
                             }
                         }
                     }
