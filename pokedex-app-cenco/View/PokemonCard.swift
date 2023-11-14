@@ -13,6 +13,9 @@ struct PokemonCard: View {
     @State private var pokemonDetails: PokemonDetails? 
     
     @State private var pokemonImage: Image?
+    
+    @State private var isLoading: Bool = false // Agrega una variable para rastrear la carga
+   
     // Estructura para almacenar los detalles del Pokémon
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
@@ -26,6 +29,7 @@ struct PokemonCard: View {
                 if let uiImage = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self.pokemonImage = Image(uiImage: uiImage)
+                        self.isLoading = false
                     }
                 }
             }
@@ -33,6 +37,7 @@ struct PokemonCard: View {
     }
     
     func loadPokemonDetails() {
+        isLoading = true // Establece isLoading en true cuando comienza la carga de detalles
         guard let url = URL(string: pokemon.url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -64,42 +69,49 @@ struct PokemonCard: View {
         ZStack{
             Color(.white).ignoresSafeArea(.all)
             
+            // Mostrar el ProgressView mientras isLoading es true
+            if isLoading {
+                ProgressView()
+            }
             //POKEMON CARD
             ZStack{
                 VStack{
                     //llamo a la clase pokemon
-                    Text(pokemon.name.uppercased())
-                        .bold().foregroundColor(.white)
-                        .font(.headline)
+                    Text(pokemon.name.capitalized)
+                        .bold()
+                        .foregroundColor(.white)
+                        .font(Font.system(size: 21, weight: .heavy))
+                    
                     HStack{
                         // types / type ./name
                         let typeValue = pokemonDetails?.types[0].type.name ?? "default"
                         Text(typeValue)
-                            .font(.caption)
+                            .font(Font.system(size:14 , weight: .heavy))
                             .foregroundColor(.white)
-                            .bold()
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
-                            .overlay(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(.white.opacity(0.25)))
+                            .overlay(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(.white.opacity(0.30)))
                             .frame(width: 80, height: 25)
-                        // sprites / oficial-artwork / front_default
-                        if let image = pokemonImage {
-                            image
-                                .frame(width: 80, height: 80)
+       
+                        if !isLoading{
+                            // sprites / oficial-artwork / front_default
+                            if let image = pokemonImage {
+                                image
+                                    .frame(width: 80, height: 80)
+                            }
                         }
-
                     }
                 }
+                
             }
             .padding(.top, 8)
             .padding(.bottom, 10)
             .padding(.horizontal, 8)
             .background(Color(backgroundColor(forType: pokemonDetails?.types[0].type.name ?? "default")))
             .cornerRadius(18)
-            .shadow(color: Color(backgroundColor(forType: pokemonDetails?.types[0].type.name ?? "default")), radius: 15, x: 0.0, y:0.0)
+            .shadow(color: Color(backgroundColor(forType: pokemonDetails?.types[0].type.name ?? "default")), radius: 12, x: 0.0, y:0.0)
 
-
-            .overlay{
+            ZStack{
                 Image("vector")
                     .resizable()
                     .scaledToFill()
@@ -107,6 +119,9 @@ struct PokemonCard: View {
                     .edgesIgnoringSafeArea(.all)
                     .opacity(0.2) // Puedes ajustar la opacidad según tus necesidades
             }
+
+
+
         }
         .onAppear(){
             loadPokemonDetails()
