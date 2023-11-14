@@ -10,13 +10,13 @@ import Foundation
 
 class PokemonViewModel:ObservableObject{
     @Published var pokemonDatos: [Pokemon] = []
+    @Published var pokemonEntity: PokemonDetailEntity?
     let baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=50"
-    
+    let useCase = LoadPokemonDetailUseCase()
     init() {
-        fetchPokemon()
     }
     
-    func fetchPokemon(){
+    func fetchPokemon(idPokemon: String) {
         guard let url = URL(string: baseUrl) else {return}
         
         URLSession.shared.dataTask(with: url){data,_,_ in
@@ -34,6 +34,8 @@ class PokemonViewModel:ObservableObject{
                 print("Error en la extracción del JSON", error.localizedDescription)
             }
         }.resume()
+        
+//        pokemonEntity = await useCase.loadPokemonDetail(idPokemon: idPokemon)
     }
     
 //    func fetchPokemonDetail() {

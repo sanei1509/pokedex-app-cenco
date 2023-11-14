@@ -30,8 +30,22 @@ struct Type: Codable {
 }
 
 struct Sprites: Codable {
-    let front_default: String?
+    let frontDefault: String?
+    let other: [String: FrontDefaultImage]
+    
+    enum CodingKeys: String, CodingKey {
+        case other
+        case frontDefault = "front_default"
+    }
     // Agrega otros campos según tus necesidades, como back_default, back_shiny, etc.
+}
+
+struct FrontDefaultImage: Codable {
+    let frontDefault: String
+    
+    enum CodingKeys: String, CodingKey {
+        case frontDefault = "front_default"
+    }
 }
 
 struct OfficialArtwork: Codable {

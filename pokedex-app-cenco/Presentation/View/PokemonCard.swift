@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct PokemonCard: View {
-    @StateObject var datosJson = PokemonViewModel()
+    @StateObject var datosJson: PokemonViewModel
     let pokemon : Pokemon
     
     @State private var pokemonDetails: PokemonDetails? 
@@ -16,6 +16,7 @@ struct PokemonCard: View {
     // Estructura para almacenar los detalles del Pokémon
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
+        self._datosJson = StateObject(wrappedValue: PokemonViewModel())
         // Llama a la función para cargar los detalles del Pokémon cuando se inicializa la vista
         loadPokemonDetails()
     }
@@ -33,6 +34,9 @@ struct PokemonCard: View {
     }
     
     func loadPokemonDetails() {
+//        Task {
+//            await datosJson.fetchPokemon()
+//        }
         guard let url = URL(string: pokemon.url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -43,7 +47,8 @@ struct PokemonCard: View {
                         self.pokemonDetails = details
                         
                         
-                        if let imageUrlString = details.sprites.front_default,
+                        
+                        if let imageUrlString = details.sprites.other.filter({ $0.key == "official-artwork" }).map({ $0.value.frontDefault }).first,
                            let imageUrl = URL(string: imageUrlString) {
                             self.loadImage(from: imageUrl)
                         }
@@ -67,11 +72,14 @@ struct PokemonCard: View {
             //POKEMON CARD
             ZStack{
                 VStack{
+                    
                     //llamo a la clase pokemon
                     Text(pokemon.name.uppercased())
                         .bold().foregroundColor(.white)
                         .font(.headline)
                     HStack{
+                        
+                        
                         // types / type ./name
                         let typeValue = pokemonDetails?.types[0].type.name ?? "default"
                         Text(typeValue)
@@ -85,7 +93,9 @@ struct PokemonCard: View {
                         // sprites / oficial-artwork / front_default
                         if let image = pokemonImage {
                             image
+                                .resizable()
                                 .frame(width: 80, height: 80)
+                                .scaledToFit()
                         }
 
                     }
@@ -109,6 +119,7 @@ struct PokemonCard: View {
             }
         }
         .onAppear(){
+            
             loadPokemonDetails()
         }
 

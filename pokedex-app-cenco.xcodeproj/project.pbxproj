@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		607C39172B03B6890079668C /* LoadPokemonDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C39162B03B6890079668C /* LoadPokemonDetailUseCase.swift */; };
+		607C391A2B03B73D0079668C /* PokemonDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C39192B03B73D0079668C /* PokemonDetailRepository.swift */; };
+		607C391D2B03B7890079668C /* PokemonDetailRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C391C2B03B7890079668C /* PokemonDetailRemote.swift */; };
+		607C391F2B03B7920079668C /* PokemonDetailLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C391E2B03B7920079668C /* PokemonDetailLocal.swift */; };
+		607C39232B03BC340079668C /* PokemonDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C39222B03BC340079668C /* PokemonDetailEntity.swift */; };
 		FB2A985D2AFAE03E00B026D7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FB2A985C2AFAE03E00B026D7 /* Alamofire */; };
 		FB2A98602AFB108A00B026D7 /* PokeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2A985F2AFB108A00B026D7 /* PokeApi.swift */; };
-		FBCD29582AFA81D700B6FBE2 /* PokemonSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD29572AFA81D700B6FBE2 /* PokemonSelected.swift */; };
 		FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */; };
 		FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0A0772AF56C7000AEA53E /* ContentView.swift */; };
 		FBD0A07A2AF56C7400AEA53E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD0A0792AF56C7400AEA53E /* Assets.xcassets */; };
@@ -23,8 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		607C39162B03B6890079668C /* LoadPokemonDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPokemonDetailUseCase.swift; sourceTree = "<group>"; };
+		607C39192B03B73D0079668C /* PokemonDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailRepository.swift; sourceTree = "<group>"; };
+		607C391C2B03B7890079668C /* PokemonDetailRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailRemote.swift; sourceTree = "<group>"; };
+		607C391E2B03B7920079668C /* PokemonDetailLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailLocal.swift; sourceTree = "<group>"; };
+		607C39222B03BC340079668C /* PokemonDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailEntity.swift; sourceTree = "<group>"; };
 		FB2A985F2AFB108A00B026D7 /* PokeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeApi.swift; sourceTree = "<group>"; };
-		FBCD29572AFA81D700B6FBE2 /* PokemonSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelected.swift; sourceTree = "<group>"; };
 		FBD0A0722AF56C7000AEA53E /* pokedex-app-cenco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pokedex-app-cenco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedex_app_cencoApp.swift; sourceTree = "<group>"; };
 		FBD0A0772AF56C7000AEA53E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +58,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		607C39152B03B6710079668C /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				607C39162B03B6890079668C /* LoadPokemonDetailUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		607C39182B03B72B0079668C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				607C39192B03B73D0079668C /* PokemonDetailRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		607C391B2B03B7780079668C /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				607C391C2B03B7890079668C /* PokemonDetailRemote.swift */,
+				607C391E2B03B7920079668C /* PokemonDetailLocal.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		607C39202B03BC1A0079668C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				607C39212B03BC290079668C /* Entity */,
+				FBD0A08F2AF92D6400AEA53E /* ViewModel */,
+				FBD0A08B2AF9223100AEA53E /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		607C39212B03BC290079668C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				607C39222B03BC340079668C /* PokemonDetailEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		FB2A985E2AFB107E00B026D7 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +128,12 @@
 		FBD0A0742AF56C7000AEA53E /* pokedex-app-cenco */ = {
 			isa = PBXGroup;
 			children = (
+				607C39202B03BC1A0079668C /* Presentation */,
+				607C391B2B03B7780079668C /* DataSource */,
+				607C39182B03B72B0079668C /* Repository */,
+				607C39152B03B6710079668C /* UseCase */,
 				FB2A985E2AFB107E00B026D7 /* API */,
-				FBD0A08F2AF92D6400AEA53E /* ViewModel */,
 				FBD0A08C2AF9225100AEA53E /* Model */,
-				FBD0A08B2AF9223100AEA53E /* View */,
 				FBD0A0752AF56C7000AEA53E /* pokedex_app_cencoApp.swift */,
 				FBD0A0772AF56C7000AEA53E /* ContentView.swift */,
 				FBD0A0792AF56C7400AEA53E /* Assets.xcassets */,
@@ -112,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				FBD0A08D2AF9226C00AEA53E /* Pokemon.swift */,
-				FBCD29572AFA81D700B6FBE2 /* PokemonSelected.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,10 +254,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				607C391D2B03B7890079668C /* PokemonDetailRemote.swift in Sources */,
+				607C391A2B03B73D0079668C /* PokemonDetailRepository.swift in Sources */,
 				FBD0A08E2AF9226C00AEA53E /* Pokemon.swift in Sources */,
 				FBD0A0782AF56C7000AEA53E /* ContentView.swift in Sources */,
-				FBCD29582AFA81D700B6FBE2 /* PokemonSelected.swift in Sources */,
+				607C39172B03B6890079668C /* LoadPokemonDetailUseCase.swift in Sources */,
+				607C39232B03BC340079668C /* PokemonDetailEntity.swift in Sources */,
 				FB2A98602AFB108A00B026D7 /* PokeApi.swift in Sources */,
+				607C391F2B03B7920079668C /* PokemonDetailLocal.swift in Sources */,
 				FBD0A0932AF9B38200AEA53E /* PokemonDetalle.swift in Sources */,
 				FBD0A0912AF92D8300AEA53E /* PokemonViewModel.swift in Sources */,
 				FBD0A0762AF56C7000AEA53E /* pokedex_app_cencoApp.swift in Sources */,
@@ -344,7 +400,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"pokedex-app-cenco/Preview Content\"";
-				DEVELOPMENT_TEAM = 38M97PF8SH;
+				DEVELOPMENT_TEAM = NJ392CW95W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -374,7 +430,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"pokedex-app-cenco/Preview Content\"";
-				DEVELOPMENT_TEAM = 38M97PF8SH;
+				DEVELOPMENT_TEAM = NJ392CW95W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
