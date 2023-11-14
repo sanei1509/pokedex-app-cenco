@@ -15,19 +15,19 @@ struct ListadoPokemon: View {
         NavigationView{
             
             ScrollView{
-                    LazyVGrid(columns: columnasGrid, spacing: 20.0){
-                        //Listado de datos
-                        if datosJson.pokemonDatos.isEmpty {
-                            ProgressView()
-                        }else{
-                            ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
-                                
-                                    PokemonCard(pokemon: pokemon)
-                                    .frame(height: 100)
-
-                            }
+                LazyVGrid(columns: columnasGrid, spacing: 20.0){
+                    //Listado de datos
+                    if datosJson.pokemonDatos.isEmpty {
+                        ProgressView()
+                    }else{
+                        ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
+                            
+                            PokemonCard(pokemon: pokemon)
+                                .frame(height: 100)
+                            
                         }
                     }
+                }
             }
             .navigationTitle("") // Elimina el título predeterminado
             .navigationBarBackButtonHidden(true) // Elimina la flecha hacia atrás predeterminada
