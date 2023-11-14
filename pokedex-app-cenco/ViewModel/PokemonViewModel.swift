@@ -9,6 +9,7 @@ import SwiftUI
 import Foundation
 
 class PokemonViewModel:ObservableObject{
+    @Published var scrollOffset: CGFloat = 0
     @Published var pokemonDatos: [Pokemon] = []
     let baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=50"
     

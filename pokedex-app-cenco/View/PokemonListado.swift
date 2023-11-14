@@ -21,22 +21,44 @@ struct ListadoPokemon: View {
                             ProgressView()
                         }else{
                             ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
-                                VStack(alignment: .leading){
+                                
                                     PokemonCard(pokemon: pokemon)
-                                }
+                                    .frame(height: 100)
+
                             }
                         }
                     }
-            }.navigationTitle("Pokedex")
-                .navigationBarItems(leading:
-                    NavigationLink(destination: Text("Vista de Flecha hacia Atrás")) {
-                        Image(systemName: "arrow.backward")
-                        .font(.title)
+            }
+            .navigationTitle("") // Elimina el título predeterminado
+            .navigationBarBackButtonHidden(true) // Elimina la flecha hacia atrás predeterminada
+            .background(Color.white.edgesIgnoringSafeArea(.all))
+            .toolbar {
+                // Modifica el diseño del navigationTitle y agrega espacio en blanco
+                ToolbarItem(placement: .topBarLeading) {
+                    VStack {
+                            Image(systemName: "arrow.backward")
+                                .font(.title)
+                                .imageScale(.small) // Cambia el tamaño de la flecha
+                                .foregroundColor(.black) // Cambia el color de la flecha
+                                .padding(.top, 30)
+                                .padding(.bottom, 5)
+                                .padding(.trailing, 70 )
+                        Text("Pokedex")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.black) // Cambia el color del título
+                            .padding(.bottom, 10) // Agrega espacio en blanco hacia arriba y hacia abajo
                     }
-                )
+                }
+                ToolbarItem(placement: .principal) {
+                    Spacer()
+                }
+                
+            }
 
         }
     }
+    
 }
 
 #Preview {

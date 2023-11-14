@@ -81,7 +81,7 @@ struct PokemonCard: View {
                         .bold()
                         .foregroundColor(.white)
                         .font(Font.system(size: 21, weight: .heavy))
-                    
+
                     HStack{
                         // types / type ./name
                         let typeValue = pokemonDetails?.types[0].type.name ?? "default"
@@ -99,6 +99,7 @@ struct PokemonCard: View {
                                 image
                                     .frame(width: 80, height: 80)
                             }
+                            
                         }
                     }
                 }
@@ -118,31 +119,19 @@ struct PokemonCard: View {
                     .frame(maxWidth: 80, maxHeight: 80)
                     .edgesIgnoringSafeArea(.all)
                     .opacity(0.2) // Puedes ajustar la opacidad según tus necesidades
+                    
+                    
             }
-
-
 
         }
         .onAppear(){
             loadPokemonDetails()
         }
-
-
     //el siguiente es el fin del body
     }
 
 }
 
-
-//struct PokemonCard_preview: PreviewProvider {
-//    static var previews: some View{
-//        Group {
-////            PokemonCard(pokemon: Pokemon())
-//            PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/5/"))
-//        }.previewLayout(.fixed(width: 200, height: 200))
-//    }
-//}
-
 #Preview {
-    PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/8/"))
+    PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/2/"))
 }

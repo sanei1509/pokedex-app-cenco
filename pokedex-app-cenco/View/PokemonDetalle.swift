@@ -12,7 +12,6 @@ struct PokemonDetalle: View {
         NavigationView{
             ZStack{
                 Color(.blue).ignoresSafeArea(.all)
-                    .frame()
             }
         }
     }
