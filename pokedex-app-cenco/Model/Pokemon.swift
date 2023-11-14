@@ -110,7 +110,7 @@ func backgroundColor(forType type:String)-> Color{
     case "flying": return Color(hex:"#94B2C7")
     case "fairy": return Color(hex:"#edafdd")
     case "bug": return Color(hex:"#73a07d")
-    case "grass": return Color(hex:"#81d365")
+    case "grass": return Color(hex:"#61E3C3")
     default : return Color(hex:"#aaaaaa")
     }
 }
