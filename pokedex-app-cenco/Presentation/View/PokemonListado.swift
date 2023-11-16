@@ -21,10 +21,8 @@ struct ListadoPokemon: View {
                         ProgressView()
                     }else{
                         ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
-                            
                             PokemonCard(pokemon: pokemon)
-                                .frame(height: 100)
-                            
+                                .id(pokemon.id)
                         }
                     }
                 }

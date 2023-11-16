@@ -48,7 +48,7 @@ struct PokemonCard: View {
                         self.pokemonDetails = details
                         
                         
-                        if let imageUrlString = details.sprites.front_default,
+                        if let imageUrlString = /*details.sprites.front_default*/details.sprites.other.filter({ $0.key == "official-artwork" }).map({ $0.value.frontDefault }).first,
                            let imageUrl = URL(string: imageUrlString) {
                             self.loadImage(from: imageUrl)
                         }
@@ -97,6 +97,7 @@ struct PokemonCard: View {
                             // sprites / oficial-artwork / front_default
                             if let image = pokemonImage {
                                 image
+                                    .resizable()
                                     .frame(width: 80, height: 80)
                             }
                             
@@ -118,7 +119,7 @@ struct PokemonCard: View {
                     .scaledToFill()
                     .frame(maxWidth: 80, maxHeight: 80)
                     .edgesIgnoringSafeArea(.all)
-                    .opacity(0.2) // Puedes ajustar la opacidad según tus necesidades
+                    .opacity(0.1) // Puedes ajustar la opacidad según tus necesidades
                     
                     
             }
