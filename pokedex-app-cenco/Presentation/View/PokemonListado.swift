@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListadoPokemon: View {
+struct PokemonListado: View {
     @StateObject var datosJson = PokemonViewModel()
     private let columnasGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -21,13 +21,21 @@ struct ListadoPokemon: View {
                         ProgressView()
                     }else{
                         ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
-                            PokemonCard(pokemon: pokemon)
-                                .id(pokemon.id)
+                            // Creo una instancia de Card
+                            let pokemonCard = PokemonCard(pokemon: pokemon)
+                            
+                            NavigationLink(destination: PokemonDetalle(pokemon: pokemon, pokemonImage: pokemonCard.pokemonImage, pokemonDetails: pokemonCard.pokemonDetails)) {
+                                    pokemonCard
+                                    .id(pokemon.id)
+                            }.onAppear{
+                                print("DETAILLSSS =====", pokemonCard.pokemonDetails)
+                                print("IMAGEEE----", pokemonCard.pokemonImage)
+                            }
                         }
                     }
                 }
             }
-            .navigationTitle("") // Elimina el título predeterminado
+            .navigationTitle("Pokedex") // Elimina el título predeterminado
             .navigationBarBackButtonHidden(true) // Elimina la flecha hacia atrás predeterminada
             .background(Color.white.edgesIgnoringSafeArea(.all))
             .toolbar {
@@ -39,13 +47,8 @@ struct ListadoPokemon: View {
                                 .imageScale(.small) // Cambia el tamaño de la flecha
                                 .foregroundColor(.black) // Cambia el color de la flecha
                                 .padding(.top, 30)
-                                .padding(.bottom, 5)
+                                .padding(.bottom, 30)
                                 .padding(.trailing, 70 )
-                        Text("Pokedex")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.black) // Cambia el color del título
-                            .padding(.bottom, 10) // Agrega espacio en blanco hacia arriba y hacia abajo
                     }
                 }
                 ToolbarItem(placement: .principal) {
@@ -60,5 +63,5 @@ struct ListadoPokemon: View {
 }
 
 #Preview {
-    ListadoPokemon()
+    PokemonListado()
 }

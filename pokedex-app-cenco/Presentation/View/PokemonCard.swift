@@ -10,17 +10,13 @@ struct PokemonCard: View {
     @StateObject var datosJson = PokemonViewModel()
     let pokemon : Pokemon
     
-    @State private var pokemonDetails: PokemonDetails? 
-    
-    @State private var pokemonImage: Image?
-    
+    @State var pokemonDetails: PokemonDetails?
+    @State var pokemonImage: Image?
     @State private var isLoading: Bool = false // Agrega una variable para rastrear la carga
-   
+    
     // Estructura para almacenar los detalles del Pokémon
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
-        // Llama a la función para cargar los detalles del Pokémon cuando se inicializa la vista
-        loadPokemonDetails()
     }
     
     func loadImage(from url: URL) {
@@ -30,8 +26,13 @@ struct PokemonCard: View {
                     DispatchQueue.main.async {
                         self.pokemonImage = Image(uiImage: uiImage)
                         self.isLoading = false
+                        print("==============")
+                        print(Image(uiImage: uiImage))
+                        print("Successfully loaded Pokemon image")
                     }
                 }
+            } else if let error = error {
+                print("Error loading image: \(error)")
             }
         }.resume()
     }
@@ -47,14 +48,14 @@ struct PokemonCard: View {
                     DispatchQueue.main.async {
                         self.pokemonDetails = details
                         
-                        
                         if let imageUrlString = /*details.sprites.front_default*/details.sprites.other.filter({ $0.key == "official-artwork" }).map({ $0.value.frontDefault }).first,
                            let imageUrl = URL(string: imageUrlString) {
                             self.loadImage(from: imageUrl)
                         }
-                        print(details)
+                          print(details)
 //                        print("TIPOS=========", details.types)
 //                        print("SPRITES=========", details.sprites)
+                        print("Successfully decoded Pokemon details")
                     }
                 } catch {
                     print("Error decoding Pokémon details: \(error)")
@@ -85,6 +86,7 @@ struct PokemonCard: View {
                     HStack{
                         // types / type ./name
                         let typeValue = pokemonDetails?.types[0].type.name ?? "default"
+                        // otros tipos opcionales que puedo llegar a tener
                         Text(typeValue)
                             .font(Font.system(size:14 , weight: .heavy))
                             .foregroundColor(.white)
@@ -92,7 +94,7 @@ struct PokemonCard: View {
                             .padding(.vertical, 8)
                             .overlay(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(.white.opacity(0.30)))
                             .frame(width: 80, height: 25)
-       
+                        
                         if !isLoading{
                             // sprites / oficial-artwork / front_default
                             if let image = pokemonImage {
@@ -119,13 +121,12 @@ struct PokemonCard: View {
                     .scaledToFill()
                     .frame(maxWidth: 80, maxHeight: 80)
                     .edgesIgnoringSafeArea(.all)
-                    .opacity(0.1) // Puedes ajustar la opacidad según tus necesidades
-                    
-                    
+                    .opacity(0.15) // Puedes ajustar la opacidad según tus necesidades
             }
+            .zIndex(0)
 
         }
-        .onAppear(){
+        .onAppear{
             loadPokemonDetails()
         }
     //el siguiente es el fin del body
@@ -136,3 +137,6 @@ struct PokemonCard: View {
 #Preview {
     PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/2/"))
 }
+
+
+
