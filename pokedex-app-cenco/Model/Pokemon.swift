@@ -15,6 +15,46 @@ struct PokemonDetails: Codable {
     let sprites: Sprites
 }
 
+struct PokemonDetails2: Codable {
+    // # numero de pokemon
+    let id: Int
+    let types: [TypeElement]
+    let sprites: Sprites
+    let abilities: [Ability]
+    //Size
+    let height: Int
+    let weight: Int
+    //Stats
+    let baseExperience: Int
+    let stats: [StatItem]
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case types = "types"
+        case sprites = "sprites"
+        case abilities = "abilities"
+        case height = "height"
+        case weight = "weight"
+        case baseExperience = "base_experience"
+        case stats = "stats"
+    }
+}
+
+struct StatItem: Codable{
+    let base_stat: StatDetail
+}
+
+struct StatDetail: Codable{
+    let name: String
+    let url: String
+}
+
+struct Ability: Codable {
+    let name: String
+    let url: String
+}
+
 struct TypeElement: Codable {
     let slot: Int
     let type: Type
@@ -105,13 +145,9 @@ struct Pokemon: Codable{
     }
     let name: String
     let url: String
+    //pruebas ////
+
 //    let types: [String]
     static var samplePokemon = Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
-}
-
-struct DetailPokemon: Codable {
-    let id: Int
-    let height: Int
-    let weight: Int
 }
 

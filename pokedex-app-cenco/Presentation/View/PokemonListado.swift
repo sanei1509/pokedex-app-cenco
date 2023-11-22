@@ -18,7 +18,13 @@ struct PokemonListado: View {
                 LazyVGrid(columns: columnasGrid, spacing: 20.0){
                     //Listado de datos
                     if datosJson.pokemonDatos.isEmpty {
-                        ProgressView()
+                        
+                        VStack(alignment: .center){
+                            Text("Cargando datos")
+                            ProgressView()
+                        }
+                        .padding()
+
                     }else{
                         ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
                             // Creo una instancia de Card

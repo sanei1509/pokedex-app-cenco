@@ -40,16 +40,6 @@ class PokemonViewModel:ObservableObject{
         }.resume()
     }
     
-//    func fetchPokemonDetail() {
-//        guard let datos = self.fetchPokemon() else { return }
-//        
-//        for item in datos.results{
-//            print(item)
-//        }
-//
-//    }
-
-    
 
     func backgroundColor(forType type:String)-> UIColor{
         switch type{

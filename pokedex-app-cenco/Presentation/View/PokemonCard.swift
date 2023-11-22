@@ -26,9 +26,9 @@ struct PokemonCard: View {
                     DispatchQueue.main.async {
                         self.pokemonImage = Image(uiImage: uiImage)
                         self.isLoading = false
-                        print("==============")
-                        print(Image(uiImage: uiImage))
-                        print("Successfully loaded Pokemon image")
+//                        print("==============")
+//                        print(Image(uiImage: uiImage))
+//                        print("Successfully loaded Pokemon image")
                     }
                 }
             } else if let error = error {
@@ -52,7 +52,11 @@ struct PokemonCard: View {
                            let imageUrl = URL(string: imageUrlString) {
                             self.loadImage(from: imageUrl)
                         }
-                          print(details)
+//                        print("#NUM --", details.id)
+//                        print("HABILIDADES --", details.abilities)
+//                        print("EXPERIENCIA --", details.baseExperience)
+//                        print("", details.height)
+//                        print(details.weight)
 //                        print("TIPOS=========", details.types)
 //                        print("SPRITES=========", details.sprites)
                         print("Successfully decoded Pokemon details")
