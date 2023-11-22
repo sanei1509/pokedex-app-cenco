@@ -10,50 +10,43 @@ import SwiftUI
 
 //==============================
 
-struct PokemonDetails: Codable {
-    let types: [TypeElement]
-    let sprites: Sprites
-}
-
 struct PokemonDetails2: Codable {
-    // # numero de pokemon
-    let id: Int
     let types: [TypeElement]
     let sprites: Sprites
-    let abilities: [Ability]
-    //Size
+}
+
+struct PokemonDetails: Codable {
+    let abilities: [ElementAbility]
+    let base_experience: Int
     let height: Int
+    let id: Int
+    let sprites: Sprites
+    let stats: [StatElement]
+    let types: [TypeElement]
     let weight: Int
-    //Stats
-    let baseExperience: Int
-    let stats: [StatItem]
-    
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case types = "types"
-        case sprites = "sprites"
-        case abilities = "abilities"
-        case height = "height"
-        case weight = "weight"
-        case baseExperience = "base_experience"
-        case stats = "stats"
-    }
 }
 
-struct StatItem: Codable{
-    let base_stat: StatDetail
+struct StatElement: Codable{
+    let base_stat: Int
+    let stat: Stat
 }
 
-struct StatDetail: Codable{
+struct Stat: Codable{
     let name: String
     let url: String
+   
+}
+
+struct ElementAbility: Codable {
+    let ability: Ability
 }
 
 struct Ability: Codable {
     let name: String
     let url: String
 }
+
+
 
 struct TypeElement: Codable {
     let slot: Int
@@ -145,9 +138,7 @@ struct Pokemon: Codable{
     }
     let name: String
     let url: String
-    //pruebas ////
-
-//    let types: [String]
+    
     static var samplePokemon = Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
 }
 
