@@ -12,7 +12,7 @@ struct PokemonCard: View {
     
     @State var pokemonDetails: PokemonDetails?
     @State var pokemonImage: Image?
-    @State private var isLoading: Bool = false // Agrega una variable para rastrear la carga
+    @State private var isLoading: Bool = true // Agrega una variable para rastrear la carga
     
     // Estructura para almacenar los detalles del Pokémon
     init(pokemon: Pokemon) {
@@ -70,19 +70,28 @@ struct PokemonCard: View {
         ZStack{
             Color(.white).ignoresSafeArea(.all)
             
-            // Mostrar el ProgressView mientras isLoading es true
-            if isLoading {
-                ProgressView()
-            }
+           
+
             //POKEMON CARD
             ZStack{
                 VStack{
+                    // Mostrar el ProgressView mientras isLoading es true
+                    if isLoading {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.1))
+                            .frame(width: 150, height: 100)
+                            .cornerRadius(10)
+                            .overlay(ProgressView())
+                    }
+                    
+                    
+                    else{
                     //llamo a la clase pokemon
                     Text(pokemon.name.capitalized)
                         .bold()
                         .foregroundColor(.white)
                         .font(Font.system(size: 21, weight: .heavy))
-
+                    
                     HStack{
                         // types / type ./name
                         let typeValue = pokemonDetails?.types[0].type.name ?? "default"
@@ -95,7 +104,6 @@ struct PokemonCard: View {
                             .overlay(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(.white.opacity(0.30)))
                             .frame(width: 80, height: 25)
                         
-                        if !isLoading{
                             // sprites / oficial-artwork / front_default
                             if let image = pokemonImage {
                                 image
@@ -103,8 +111,9 @@ struct PokemonCard: View {
                                     .frame(width: 80, height: 80)
                             }
                             
-                        }
+                        
                     }
+                }
                 }
                 
             }
