@@ -53,12 +53,6 @@ struct PokemonCard: View {
                             self.loadImage(from: imageUrl)
                         }
 //                        print("#NUM --", details.id)
-//                        print("HABILIDADES --", details.abilities)
-//                        print("EXPERIENCIA --", details.baseExperience)
-//                        print("", details.height)
-//                        print(details.weight)
-//                        print("TIPOS=========", details.types)
-//                        print("SPRITES=========", details.sprites)
                         print("Successfully decoded Pokemon details")
                     }
                 } catch {
@@ -72,14 +66,10 @@ struct PokemonCard: View {
 //    @ObservedObject var viewModel = PokemonViewModel()
     var body: some View {
         ZStack{
-            Color(.white).ignoresSafeArea(.all)
-            
-           
-
+            Color(.black).opacity(0.9).ignoresSafeArea(.all)
             //POKEMON CARD
             ZStack{
                 VStack{
-                    // Mostrar el ProgressView mientras isLoading es true
                     if isLoading {
                         Rectangle()
                             .fill(Color.gray.opacity(0.1))
@@ -87,26 +77,49 @@ struct PokemonCard: View {
                             .cornerRadius(10)
                             .overlay(ProgressView())
                     }
-                    
-                    
                     else{
                     //llamo a la clase pokemon
-                    Text(pokemon.name.capitalized)
-                        .bold()
-                        .foregroundColor(.white)
-                        .font(Font.system(size: 21, weight: .heavy))
-                    
+                        HStack{
+                            Text(pokemon.name.capitalized)
+                                .bold()
+                                .foregroundColor(.white)
+                                .font(Font.system(size: 21, weight: .heavy))
+                            
+                            Spacer()
+                            
+                                // Mostrar el ID del Pokémon
+                                if let id = pokemonDetails?.id {
+                                    Text("#\(id)")
+                                        .foregroundColor(.white)
+                                        .font(Font.system(size: 21, weight: .heavy))
+                                        .opacity(0.4)
+                                }
+                        }
+
+
+                        
                     HStack{
-                        // types / type ./name
-                        let typeValue = pokemonDetails?.types[0].type.name ?? "default"
-                        // otros tipos opcionales que puedo llegar a tener
-                        Text(typeValue)
-                            .font(Font.system(size:14 , weight: .heavy))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
-                            .overlay(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(.white.opacity(0.30)))
-                            .frame(width: 80, height: 25)
+                        // Mostrar todas las etiquetas de tipo del Pokémon
+                        VStack(spacing: 10) {
+                            ForEach(pokemonDetails?.types ?? [], id: \.type.name) { typeElement in
+                                Text(typeElement.type.name.capitalized)
+                                    .font(Font.system(size: 14, weight: .heavy))
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .overlay(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(.white.opacity(0.30)))
+                                    .cornerRadius(25)
+                                    .frame(height: 25)
+                            }
+                        }
+//                        let typeValue = pokemonDetails?.types[0].type.name ?? "default"
+//                        Text(typeValue)
+//                            .font(Font.system(size:14 , weight: .heavy))
+//                            .foregroundColor(.white)
+//                            .padding(.horizontal, 16)
+//                            .padding(.vertical, 8)
+//                            .overlay(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(.white.opacity(0.30)))
+//                            .frame(width: 100, height: 25)
                         
                             // sprites / oficial-artwork / front_default
                             if let image = pokemonImage {
@@ -126,7 +139,7 @@ struct PokemonCard: View {
             .padding(.horizontal, 8)
             .background(Color(backgroundColor(forType: pokemonDetails?.types[0].type.name ?? "default")))
             .cornerRadius(18)
-            .shadow(color: Color(backgroundColor(forType: pokemonDetails?.types[0].type.name ?? "default")), radius: 12, x: 0.0, y:0.0)
+            .shadow(color: Color(backgroundColor(forType: pokemonDetails?.types[0].type.name ?? "default")), radius: 5, x: 0.0, y:0.0)
 
             ZStack{
                 Image("vector")
@@ -148,7 +161,7 @@ struct PokemonCard: View {
 }
 
 #Preview {
-    PokemonCard(pokemon: Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/2/"))
+    PokemonCard(pokemon: Pokemon.samplePokemon) // le paso el sample pokemon con el objeto / instancia de prueba
 }
 
 
