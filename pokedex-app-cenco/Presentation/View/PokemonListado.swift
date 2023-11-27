@@ -30,20 +30,18 @@ struct PokemonListado: View {
                             // Creo una instancia de Card
                             let pokemonCard = PokemonCard(pokemon: pokemon)
                             
-                            NavigationLink(destination: PokemonDetalle(pokemon: pokemon, pokemonImage: pokemonCard.pokemonImage, pokemonDetails: pokemonCard.pokemonDetails)) {
+                            NavigationLink(destination: PokemonDetalle(pokemon: pokemon)) {
                                     pokemonCard
                                     .id(pokemon.id)
-                            }.onAppear{
-                                print("DETAILLSSS =====", pokemonCard.pokemonDetails)
-                                print("IMAGEEE----", pokemonCard.pokemonImage)
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("Pokedex") // Elimina el título predeterminado
+            .navigationTitle("Pokedex")
+            .foregroundColor(.white)// Elimina el título predeterminado
             .navigationBarBackButtonHidden(true) // Elimina la flecha hacia atrás predeterminada
-            .background(Color.white.edgesIgnoringSafeArea(.all))
+            .background(Color.black.edgesIgnoringSafeArea(.all))
             .toolbar {
                 // Modifica el diseño del navigationTitle y agrega espacio en blanco
                 ToolbarItem(placement: .topBarLeading) {
