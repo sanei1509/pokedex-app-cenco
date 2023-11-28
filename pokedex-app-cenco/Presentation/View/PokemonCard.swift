@@ -80,7 +80,7 @@ struct PokemonCard: View {
             VStack (spacing: 10) {
                 ForEach(viewModel.pokemonDetails?.types ?? [], id: \.type.name) { typeElement in
                     Text(typeElement.type.name.capitalized)
-                        .font(Font.system(size: 14, weight: .heavy))
+                        .font(Font.system(size: 12, weight: .heavy))
                         .foregroundColor(.white)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)
