@@ -8,36 +8,28 @@
 import SwiftUI
 
 struct PokemonListado: View {
-    @StateObject var datosJson = PokemonViewModel()
+    @StateObject var viewModel = PokemonListadoViewModel()
     private let columnasGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationView{
-            
             ScrollView{
                 LazyVGrid(columns: columnasGrid, spacing: 20.0){
                     //Listado de datos
-                    if datosJson.pokemonDatos.isEmpty {
+                    if viewModel.pokemonDatos.isEmpty {
                         
                         VStack(alignment: .center){
                             Text("Cargando datos")
                             ProgressView()
                         }
                         .padding()
-
+                        
                     }else{
-                        ForEach(datosJson.pokemonDatos, id: \.id){pokemon in
-                            // Creo una instancia de Card
-                            let pokemonCard = PokemonCard(pokemon: pokemon)
-                            
-                            NavigationLink(destination: PokemonDetalle(pokemon: pokemon)) {
-                                    pokemonCard
-                                    .id(pokemon.id)
-                            }
-                        }
+                        listadoCards
                     }
                 }
             }
+            .padding(.horizontal, 10)
             .navigationTitle("Pokedex")
             .foregroundColor(.white)// Elimina el título predeterminado
             .navigationBarBackButtonHidden(true) // Elimina la flecha hacia atrás predeterminada
@@ -46,13 +38,13 @@ struct PokemonListado: View {
                 // Modifica el diseño del navigationTitle y agrega espacio en blanco
                 ToolbarItem(placement: .topBarLeading) {
                     VStack {
-                            Image(systemName: "arrow.backward")
-                                .font(.title)
-                                .imageScale(.small) // Cambia el tamaño de la flecha
-                                .foregroundColor(.black) // Cambia el color de la flecha
-                                .padding(.top, 30)
-                                .padding(.bottom, 30)
-                                .padding(.trailing, 70 )
+                        Image(systemName: "arrow.backward")
+                            .font(.title)
+                            .imageScale(.small) // Cambia el tamaño de la flecha
+                            .foregroundColor(.black) // Cambia el color de la flecha
+                            .padding(.top, 30)
+                            .padding(.bottom, 30)
+                            .padding(.trailing, 70 )
                     }
                 }
                 ToolbarItem(placement: .principal) {
@@ -60,10 +52,21 @@ struct PokemonListado: View {
                 }
                 
             }
-
+            
+        }
+    } // END THE VIEW
+    
+    private var listadoCards: some View {
+        ForEach(viewModel.pokemonDatos, id: \.id) { pokemon in
+            let pokemonCard = PokemonCard(pokemon: pokemon)
+            
+            NavigationLink(destination: PokemonDetalle(pokemon: pokemon)) {
+                    pokemonCard
+                    .id(pokemon.id)
+            }
         }
     }
-    
+    // =======================
 }
 
 #Preview {
