@@ -65,36 +65,40 @@ struct PokemonDetalle: View {
                     }
                 }
             }
-            .padding(.top, 20)
+            .padding(.top, 5)
             .padding(.bottom, 10)
             
-            
-            Text("Size")
-                .font(.system(size: 16))
-                .fontWeight(.semibold)
-            HStack{
-                VStack{
-                    Text("Height: ")
-                        .opacity(0.6)
-                        .padding(20)
-                        .foregroundColor(.black)
-                    Text("\(viewModel.pokemonDetails?.height ?? 0) M")
-                        .fontWeight(.heavy)
-                        .foregroundColor(.black)
-                }
-                Spacer()
-                
-                VStack{
-                    Text("Weight: ")
-                        .foregroundColor(.black)
-                        .opacity(0.6)
-                        .padding(20)
-                    Text("\(viewModel.pokemonDetails?.weight ?? 0) Kg").fontWeight(.heavy)
-                        .foregroundColor(.black)
-                }
-
+            VStack{
+//                Text("Size")
+//                    .font(.system(size: 16))
+//                    .fontWeight(.semibold)
+//                    .foregroundColor(.black)
+                HStack{
+                    Spacer()
+                    VStack{
+                        Text("Height: ")
+                            .opacity(0.6)
+                            .padding(20)
+                            .foregroundColor(.black)
+                        Text("\(viewModel.pokemonDetails?.height ?? 0) M")
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black)
+                    }
+                    Spacer()
                     
+                    VStack{
+                        Text("Weight: ")
+                            .foregroundColor(.black)
+                            .opacity(0.6)
+                            .padding(20)
+                        Text("\(viewModel.pokemonDetails?.weight ?? 0) Kg").fontWeight(.heavy)
+                            .foregroundColor(.black)
+                    }
+                    Spacer()
+                        
+                }
             }
+
         }
         .padding(.top, 10)
         
@@ -155,32 +159,87 @@ struct PokemonDetalle: View {
                 .lineSpacing(8.0)
                 .opacity(0.6)
                 .foregroundColor(.black)
-            
             // Espacio de SIZE
             sizeView
-        
             HStack (alignment: .center) {
                 Spacer()
                 VStack {
                     VStack (alignment: .center) {
-                        Text("Base Stats")
+                        Text("Stats")
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
-                        Text("Base experience:  \(viewModel.pokemonDetails?.base_experience ?? 0)")
-                            .foregroundColor(.black)
+                        //Barras de estadisticas
+                        VStack{
+
+                            HStack {
+                                Text("EXP")
+                                    .foregroundColor(.black)
+                                
+                                Rectangle()
+                                    .fill(Color.yellow)
+                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
+                                    .cornerRadius(10)
+
+                                Spacer()
+
+                                Text("\(viewModel.pokemonDetails?.base_experience ?? 0)/\(300)")
+                                    .font(.caption)
+                            }
+                            
+                            HStack {
+                                Text("HP")
+                                    .foregroundColor(.black)
+                                Rectangle()
+                                    .fill(Color.red)
+                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
+                                    .cornerRadius(10)
+                                Spacer()
+                                Text("100\(300)")
+                                    .font(.caption)
+                            }
+                            
+                            HStack {
+                                Text("ATK")
+                                    .foregroundColor(.black)
+                                Rectangle()
+                                    .fill(Color.purple)
+                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
+                                    .cornerRadius(10)
+                                Spacer()
+                                Text("100\(300)")
+                                    .font(.caption)
+                            }
+                            
+                            HStack {
+                                Text("DEF")
+                                    .foregroundColor(.black)
+                                Rectangle()
+                                    .fill(Color.brown)
+                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
+                                    .cornerRadius(10)
+                                Spacer()
+                                Text("100\(300)")
+                                    .font(.caption)
+                            }
+                        }
                         
                     }.padding(10)
                     VStack (alignment: .center) {
-                        Text("Others")
+                        Text("Abilities")
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
 
-                        Text("Abilities: Bola de fuego")
-                            .opacity(0.6)
-                            .foregroundColor(.black)
-                        //                            .frame(maxWidth: .infinity, alignment: .leading).ignoresSafeArea()
+                        VStack{
+//                            Text("Abilities: ")
+//                                .opacity(0.6)
+//                                .foregroundColor(.black)
+                            
+                            Text("Bola de fuego")
+                                .foregroundColor(.black)
+                        }
+
                     }.padding(10)
                 }
                 Spacer()
@@ -195,6 +254,11 @@ struct PokemonDetalle: View {
         .cornerRadius(30, corners: [.topLeft, .topRight])
     }
     
+    private func barWidth(for value: Int, max maxValue: Int) -> CGFloat {
+        let screenWidth = UIScreen.main.bounds.width - 40 // Ajustar según el padding deseado
+        let fraction = CGFloat(value) / CGFloat(maxValue)
+        return fraction * screenWidth
+    }
     // ============
 }
 

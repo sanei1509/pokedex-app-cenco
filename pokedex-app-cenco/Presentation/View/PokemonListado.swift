@@ -44,7 +44,7 @@ struct PokemonListado: View {
 
 
                 
-                Text("List of 100 pokemon, showing detailed information about each one, you can save your favorites in your list")
+                Text("List of 100 pokemon, showing detailed information about each one. you can save your favorites in your list")
                     .padding(.bottom, 20)
                     .padding(.horizontal, 30)
                     .multilineTextAlignment(.center)

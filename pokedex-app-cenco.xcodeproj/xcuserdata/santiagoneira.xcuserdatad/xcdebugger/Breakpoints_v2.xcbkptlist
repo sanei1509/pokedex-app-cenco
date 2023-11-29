@@ -298,5 +298,165 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "906BB84F-D81E-4FEA-9105-8415E933E950"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "906BB84F-D81E-4FEA-9105-8415E933E950 - 7db5b4c0c02b5459"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pokedex_app_cenco.PokemonListado.body.getter : some"
+                  moduleName = "pokedex-app-cenco"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santiagoneira/Documents/pokedex-app-cenco/pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "308">
+               </Location>
+               <Location
+                  uuid = "906BB84F-D81E-4FEA-9105-8415E933E950 - a26e4eca4f526640"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in pokedex_app_cenco.PokemonListado.body.getter : some"
+                  moduleName = "pokedex-app-cenco"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santiagoneira/Documents/pokedex-app-cenco/pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "816">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4263557F-FDF2-4585-AC68-F252E91B4E9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "4263557F-FDF2-4585-AC68-F252E91B4E9C - 7db5b4c0c02b5459"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pokedex_app_cenco.PokemonListado.body.getter : some"
+                  moduleName = "pokedex-app-cenco"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santiagoneira/Documents/pokedex-app-cenco/pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "308">
+               </Location>
+               <Location
+                  uuid = "4263557F-FDF2-4585-AC68-F252E91B4E9C - a26e4eca4f526640"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in pokedex_app_cenco.PokemonListado.body.getter : some"
+                  moduleName = "pokedex-app-cenco"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santiagoneira/Documents/pokedex-app-cenco/pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "816">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1BDE055-75E9-435E-94C4-35DA7E71A7E7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F1BDE055-75E9-435E-94C4-35DA7E71A7E7 - a26e4eca4f526640"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in pokedex_app_cenco.PokemonListado.body.getter : some"
+                  moduleName = "pokedex-app-cenco"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santiagoneira/Documents/pokedex-app-cenco/pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "816">
+               </Location>
+               <Location
+                  uuid = "F1BDE055-75E9-435E-94C4-35DA7E71A7E7 - 4df594d3919f6f88"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.ForEach&lt;Swift.Array&lt;pokedex_app_cenco.Pokemon&gt;, Swift.Optional&lt;Swift.Int&gt;, SwiftUI.NavigationLink&lt;&lt;&lt;opaque return type of SwiftUI.View.id&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Hashable&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, pokedex_app_cenco.PokemonDetalle&gt;&gt;&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in pokedex_app_cenco.PokemonListado.body.getter : some"
+                  moduleName = "pokedex-app-cenco"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santiagoneira/Documents/pokedex-app-cenco/pokedex-app-cenco/Presentation/View/PokemonListado.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "360">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9CA53383-2E2B-433F-B769-0D9617F8120B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pokedex-app-cenco/Presentation/ViewModel/PokemonViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "PokemonViewModel"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
