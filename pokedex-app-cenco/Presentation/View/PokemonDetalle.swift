@@ -108,7 +108,7 @@ struct PokemonDetalle: View {
                     
                 }
                 .padding(.leading, 30)
-                .padding(.top, -40)
+                .padding(.top, 0)
                 Spacer() // Separa el texto y el corazón
                 Button(action: toggleFavorite){
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
@@ -116,7 +116,7 @@ struct PokemonDetalle: View {
                         .font(.title)
                     //                                    .foregroundColor(.white)
                         .padding(.trailing, 30)
-                        .padding(.bottom, 30)
+                        .padding(.bottom, -10)
                 }.onAppear {
                     isFavorite = favoritesManager.isFavorite(pokemonId: pokemonId)
                 }
