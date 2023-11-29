@@ -18,14 +18,13 @@ class PokemonCardViewModel : ObservableObject {
     @Published var isLoading: Bool = true
     
     // Solid
-//    private let repository = PokemonRepository()
+    //    private let repository = PokemonRepository()
     
     //constructor
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
         loadPokemonDetails()
     }
-    
     
     func loadPokemonDetails() {
         isLoading = true // Establece isLoading en true cuando comienza la carga de detalles
@@ -71,7 +70,6 @@ class PokemonCardViewModel : ObservableObject {
     }
     
 
-    
     func backgroundColor(forType type:String)-> UIColor{
         switch type{
         case "fire": return .systemRed
