@@ -9,7 +9,7 @@ import Foundation
 
 class PokemonListadoViewModel: ObservableObject {
     @Published var pokemonDatos: [Pokemon] = []
-    let baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=50"
+    let baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=100"
     
     init(){
         fetchPokemon()
