@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct PokemonListado: View {
+    // Instancias necesitadas
     @StateObject var viewModel = PokemonListadoViewModel()
+    @StateObject var favoritesManager = FavoritesManager()
+
     private let columnasGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    // Probando UserDefaults
+    let defaults = UserDefaults.standard
     
     var body: some View {
         NavigationView{
@@ -29,7 +35,7 @@ struct PokemonListado: View {
                 VStack {
                     Spacer()
                     HStack {
-                    NavigationLink(destination: FavoritesView()) {
+                        NavigationLink(destination: FavoritesView().environmentObject(favoritesManager)) {
                         Circle()
                             .fill(Color.white) // Color de fondo del círculo
                             .frame(width: 45, height: 45)

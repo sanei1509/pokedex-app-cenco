@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct FavoritesView: View {
-//    @ObservedObject var favoritesManager: FavoritesManager
+    @EnvironmentObject var favoritesManager: FavoritesManager
+
     
     var body: some View {
         NavigationView {
-            List {
-                Text("1")
-                Text("2")
-                Text("3")
+            List(favoritesManager.favorites, id: \.self) { pokemonId in
+                Text("Pokemon ID: \(pokemonId)")
+                    .foregroundColor(.black)
+                    .font(.title)
             }
             .navigationTitle("Mis favoritos")
             .foregroundColor(.black)
+            .onAppear{
+                favoritesManager.loadFavorites()
+            }
         }
     }
-}
-    
-
-#Preview {
-    FavoritesView()
 }

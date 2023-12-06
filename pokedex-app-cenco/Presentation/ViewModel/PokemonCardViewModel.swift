@@ -26,6 +26,10 @@ class PokemonCardViewModel : ObservableObject {
         loadPokemonDetails()
     }
     
+    func savePokemon() {
+        
+    }
+    
     func loadPokemonDetails() {
         isLoading = true // Establece isLoading en true cuando comienza la carga de detalles
         guard let url = URL(string: pokemon.url) else { return }

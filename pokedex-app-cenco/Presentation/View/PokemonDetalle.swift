@@ -69,10 +69,6 @@ struct PokemonDetalle: View {
             .padding(.bottom, 10)
             
             VStack{
-//                Text("Size")
-//                    .font(.system(size: 16))
-//                    .fontWeight(.semibold)
-//                    .foregroundColor(.black)
                 HStack{
                     Spacer()
                     VStack{
@@ -175,12 +171,13 @@ struct PokemonDetalle: View {
                             HStack {
                                 Text("EXP")
                                     .foregroundColor(.black)
+                                    .frame(width: 50)
                                 
                                 Rectangle()
                                     .fill(Color.yellow)
                                     .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
                                     .cornerRadius(10)
-
+                                   
                                 Spacer()
 
                                 Text("\(viewModel.pokemonDetails?.base_experience ?? 0)/\(300)")
@@ -190,6 +187,7 @@ struct PokemonDetalle: View {
                             HStack {
                                 Text("HP")
                                     .foregroundColor(.black)
+                                    .frame(width: 50)
                                 Rectangle()
                                     .fill(Color.red)
                                     .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
@@ -202,9 +200,10 @@ struct PokemonDetalle: View {
                             HStack {
                                 Text("ATK")
                                     .foregroundColor(.black)
+                                    .frame(width: 50)
                                 Rectangle()
                                     .fill(Color.purple)
-                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
+                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300 ), height: 10)
                                     .cornerRadius(10)
                                 Spacer()
                                 Text("100\(300)")
@@ -214,6 +213,7 @@ struct PokemonDetalle: View {
                             HStack {
                                 Text("DEF")
                                     .foregroundColor(.black)
+                                    .frame(width: 50)
                                 Rectangle()
                                     .fill(Color.brown)
                                     .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
@@ -256,7 +256,7 @@ struct PokemonDetalle: View {
     
     private func barWidth(for value: Int, max maxValue: Int) -> CGFloat {
         let screenWidth = UIScreen.main.bounds.width - 40 // Ajustar según el padding deseado
-        let fraction = CGFloat(value) / CGFloat(maxValue)
+        let fraction = CGFloat(value) / CGFloat(maxValue )
         return fraction * screenWidth
     }
     // ============
