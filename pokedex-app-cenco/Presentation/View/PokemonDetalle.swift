@@ -13,7 +13,7 @@ struct PokemonDetalle: View {
     @State private var isFavorite = false
     
     private let pokemonId: Int
-    private let favoritesManager = FavoritesManager()
+    @EnvironmentObject private var favoritesManager: FavoritesManager
     
     // Estructura para almacenar los detalles del Pokémon
     init(pokemon: Pokemon) {

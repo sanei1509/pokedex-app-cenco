@@ -11,7 +11,7 @@ import SwiftUI
 struct pokedex_app_cencoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
