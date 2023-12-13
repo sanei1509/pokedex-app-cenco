@@ -17,7 +17,8 @@ struct PokemonCard: View {
     
     var body: some View {
         ZStack{
-            Color(.black).opacity(0.9).ignoresSafeArea(.all)
+            //esto es lo que bugueaba el fondo de mi tarjeta
+//            Color(.white).opacity(0.9).ignoresSafeArea(.all)
 //            Color("ColorPrueba", bundle: nil)  definido en assets
             //CARD
             ZStack{
@@ -36,7 +37,7 @@ struct PokemonCard: View {
             }
             .padding(.top, 8).padding(.bottom, 10).padding(.horizontal, 8)
             .background(Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")))
-            .shadow(color: Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")), radius: 5, x: 0.0, y:0.0)
+            .shadow(color: Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")), radius: 20, x: 2.0, y:3.0)
             .cornerRadius(18)
             //POKEBOLE IN THE BACKGROUND
             ZStack{
@@ -105,7 +106,7 @@ struct PokemonCard: View {
     private var skeletonCardView: some View {
         Rectangle()
             .fill(Color.gray.opacity(0.1))
-            .frame(width: 150, height: 100)
+            .frame(width: 165, height: 100)
             .cornerRadius(10)
             .overlay(ProgressView())
     }

@@ -10,19 +10,32 @@ import SwiftUI
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
 
+    init() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
     
     var body: some View {
         NavigationView {
-            List(favoritesManager.favorites, id: \.self) { pokemonId in
-                Text("Pokemon ID: \(pokemonId)")
-                    .foregroundColor(.black)
-                    .font(.title)
+            ScrollView {
+                LazyVStack(spacing: 20) {
+                    ForEach(favoritesManager.favorites, id: \.id) { pokemon in
+                        NavigationLink(destination: PokemonDetalle(pokemon: pokemon)) {
+                            PokemonCard(pokemon: pokemon)
+                            .frame(maxWidth: 200, maxHeight: 300)
+                        }
+                    }
+                }
+                .padding(.vertical, 20)
             }
+            //cambiar el color de "Mis favoritos"
+            .foregroundColor(.white)
             .navigationTitle("Mis favoritos")
-            .foregroundColor(.black)
+            .background(Color(.white)) // Fondo gris oscuro
             .onAppear{
                 favoritesManager.loadFavorites()
             }
+           
         }
+        
     }
 }

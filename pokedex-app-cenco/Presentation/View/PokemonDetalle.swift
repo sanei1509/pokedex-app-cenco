@@ -43,7 +43,7 @@ struct PokemonDetalle: View {
     private func toggleFavorite() {
         isFavorite.toggle()
         if isFavorite {
-            favoritesManager.addFavorite(pokemonId: pokemonId)
+            favoritesManager.addFavorite(pokemon: viewModel.pokemon)
         } else {
             favoritesManager.removeFavorite(pokemonId: pokemonId)
         }

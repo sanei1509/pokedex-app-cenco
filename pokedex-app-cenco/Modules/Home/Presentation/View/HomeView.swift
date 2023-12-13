@@ -35,7 +35,8 @@ struct HomeView: View {
             .navigationTitle("Pokedex")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true) // Elimina la flecha hacia atrás predeterminada
-            .background(Color.black.edgesIgnoringSafeArea(.all))
+            //fondo de la pantalla gris oscuro
+            .background(Color(.darkGray).ignoresSafeArea(.all))
             .toolbar {
                 // Modifica el diseño del navigationTitle y agrega espacio en blanco
                 ToolbarItem(placement: .topBarLeading) {
