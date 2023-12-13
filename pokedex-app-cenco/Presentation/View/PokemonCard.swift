@@ -37,7 +37,7 @@ struct PokemonCard: View {
             }
             .padding(.top, 8).padding(.bottom, 10).padding(.horizontal, 8)
             .background(Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")))
-            .shadow(color: Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")), radius: 20, x: 2.0, y:3.0)
+            .shadow(color: Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")).opacity(0.5), radius: 30, x: 5.0, y:5.0)
             .cornerRadius(18)
             //POKEBOLE IN THE BACKGROUND
             ZStack{

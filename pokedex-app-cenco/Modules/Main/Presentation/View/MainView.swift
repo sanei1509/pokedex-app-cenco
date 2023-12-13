@@ -13,10 +13,10 @@ struct MainView: View {
     
     init() {
         // Establece el color de los ítems del tab no seleccionados
-        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+        UITabBar.appearance().unselectedItemTintColor = UIColor.black
 
         // Establece el color de fondo del TabBar si es necesario
-        UITabBar.appearance().backgroundColor = UIColor.black
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
     
     var body: some View {
@@ -24,7 +24,7 @@ struct MainView: View {
             
             HomeView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Inicio", systemImage: "house")
                 }.environmentObject(favoritesManager)
             
             FavoritesView()
@@ -32,7 +32,7 @@ struct MainView: View {
                     Label("Favoritos", systemImage: "star")
                 }.environmentObject(favoritesManager)
         }
-        .accentColor(.yellow)
+        .accentColor(Color.customIndigoMedium)
         .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
     }
 }

@@ -16,7 +16,7 @@ struct HomeView: View {
                     Text("Pokedex")
                         .font(Font.system(size: 32,weight: .heavy))
                         .fontWeight(.black)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding(.top, -20)
                         .padding(.bottom, 5)
                     Spacer()
@@ -26,6 +26,7 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                     .padding(.horizontal, 30)
                     .multilineTextAlignment(.center)
+                    .foregroundColor(.gray)
                 
                 PokemonListado()
                 
@@ -36,7 +37,7 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true) // Elimina la flecha hacia atrás predeterminada
             //fondo de la pantalla gris oscuro
-            .background(Color(.darkGray).ignoresSafeArea(.all))
+            .background(.white)
             .toolbar {
                 // Modifica el diseño del navigationTitle y agrega espacio en blanco
                 ToolbarItem(placement: .topBarLeading) {
