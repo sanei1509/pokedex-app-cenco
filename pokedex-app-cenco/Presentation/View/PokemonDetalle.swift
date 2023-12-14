@@ -111,8 +111,8 @@ struct PokemonDetalle: View {
                 .padding(.top, 0)
                 Spacer() // Separa el texto y el corazón
                 Button(action: toggleFavorite){
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(isFavorite ? .red : .white)
+                    Image(systemName: isFavorite ? "star.fill" : "star")
+                        .foregroundColor(isFavorite ? .white : .white)
                         .font(.title)
                     //                                    .foregroundColor(.white)
                         .padding(.trailing, 30)
@@ -151,10 +151,14 @@ struct PokemonDetalle: View {
                 .fontWeight(.bold)
                 .padding(.vertical, 8)
                 .foregroundColor(.black)
-            Text("texto random de description sobre este maravilloso personaje")
+            Text(format(flavorText: viewModel.descriptionPokemon))
                 .lineSpacing(8.0)
                 .opacity(0.6)
                 .foregroundColor(.black)
+                .frame(maxWidth: .infinity, alignment: .center) // Asegura que el texto ocupe el ancho completo//            Text("\(viewModel.pokemonDetails?.species.url ?? "Es un pokemon y ya")")
+//                .lineSpacing(8.0)
+//                .opacity(0.6)
+//                .foregroundColor(.black)
             // Espacio de SIZE
             sizeView
             HStack (alignment: .center) {
@@ -168,6 +172,8 @@ struct PokemonDetalle: View {
                         //Barras de estadisticas
                         VStack{
 
+                            
+                           
                             HStack {
                                 Text("EXP")
                                     .foregroundColor(.black)
@@ -184,44 +190,52 @@ struct PokemonDetalle: View {
                                     .font(.caption)
                             }
                             
-                            HStack {
-                                Text("HP")
-                                    .foregroundColor(.black)
-                                    .frame(width: 50)
-                                Rectangle()
-                                    .fill(Color.red)
-                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
-                                    .cornerRadius(10)
-                                Spacer()
-                                Text("100\(300)")
-                                    .font(.caption)
+                            if let estadisticas = viewModel.pokemonDetails?.stats{
+                                ForEach(estadisticas, id: \.stat.name){stat in
+                                    Text(stat.stat.name).foregroundColor(.black)
+                                    Text(stat.stat.url).foregroundColor(.black)
+                                }
                             }
                             
-                            HStack {
-                                Text("ATK")
-                                    .foregroundColor(.black)
-                                    .frame(width: 50)
-                                Rectangle()
-                                    .fill(Color.purple)
-                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300 ), height: 10)
-                                    .cornerRadius(10)
-                                Spacer()
-                                Text("100\(300)")
-                                    .font(.caption)
-                            }
                             
-                            HStack {
-                                Text("DEF")
-                                    .foregroundColor(.black)
-                                    .frame(width: 50)
-                                Rectangle()
-                                    .fill(Color.brown)
-                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
-                                    .cornerRadius(10)
-                                Spacer()
-                                Text("100\(300)")
-                                    .font(.caption)
-                            }
+//                            HStack {
+//                                Text("HP")
+//                                    .foregroundColor(.black)
+//                                    .frame(width: 50)
+//                                Rectangle()
+//                                    .fill(Color.red)
+//                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
+//                                    .cornerRadius(10)
+//                                Spacer()
+//                                Text("100\(300)")
+//                                    .font(.caption)
+//                            }
+//                            
+//                            HStack {
+//                                Text("ATK")
+//                                    .foregroundColor(.black)
+//                                    .frame(width: 50)
+//                                Rectangle()
+//                                    .fill(Color.purple)
+//                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300 ), height: 10)
+//                                    .cornerRadius(10)
+//                                Spacer()
+//                                Text("100\(300)")
+//                                    .font(.caption)
+//                            }
+//                            
+//                            HStack {
+//                                Text("DEF")
+//                                    .foregroundColor(.black)
+//                                    .frame(width: 50)
+//                                Rectangle()
+//                                    .fill(Color.brown)
+//                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
+//                                    .cornerRadius(10)
+//                                Spacer()
+//                                Text("100\(300)")
+//                                    .font(.caption)
+//                            }
                         }
                         
                     }.padding(10)
@@ -232,12 +246,18 @@ struct PokemonDetalle: View {
                             .foregroundColor(.black)
 
                         VStack{
-//                            Text("Abilities: ")
-//                                .opacity(0.6)
-//                                .foregroundColor(.black)
-                            
-                            Text("Bola de fuego")
-                                .foregroundColor(.black)
+                            // Comprueba si hay habilidades disponibles y luego las lista todas
+                            if let abilities = viewModel.pokemonDetails?.abilities {
+                                ForEach(abilities, id: \.ability.name) { ability in
+                                    Text(ability.ability.name.capitalized)
+                                        .foregroundColor(.black)
+                                    
+                                }
+                            } else {
+                                // En caso de que no haya habilidades, muestra un texto predeterminado
+                                Text("Sin habilidad")
+                                    .foregroundColor(.black)
+                            }
                         }
 
                     }.padding(10)
@@ -260,6 +280,15 @@ struct PokemonDetalle: View {
         return fraction * screenWidth
     }
     // ============
+    
+    private func format(flavorText: String) -> String {
+        let formattedString = flavorText
+            .replacingOccurrences(of: "\n", with: " ")
+            .replacingOccurrences(of: "\u{0C}", with: " ") // Reemplaza \f (salto de formulario)
+            .replacingOccurrences(of: "\r", with: " ")
+        return formattedString
+    }
+    
 }
 
 //Codigo para poder dar un redondeado

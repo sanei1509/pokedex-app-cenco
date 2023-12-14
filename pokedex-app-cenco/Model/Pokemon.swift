@@ -24,11 +24,37 @@ struct PokemonDetails: Codable {
     let stats: [StatElement]
     let types: [TypeElement]
     let weight: Int
+    let species: PokemonSpecies
+//    let pokemonSpecies: PokemonSpecies
+}
+
+
+// Estructura para decodificar los detalles de la especie del Pokémon
+struct PokemonSpeciesDetails: Codable {
+    let flavorTextEntries: [FlavorTextEntry]
+
+    enum CodingKeys: String, CodingKey {
+        case flavorTextEntries = "flavor_text_entries"
+    }
+}
+
+struct FlavorTextEntry: Codable {
+    let flavorText: String
+    
+    enum CodingKeys: String, CodingKey {
+        case flavorText = "flavor_text"
+    }
+}
+
+struct PokemonSpecies: Codable {
+    let name: String
+    let url: String
 }
 
 struct StatElement: Codable{
     let base_stat: Int
     let stat: Stat
+    let effort: Int
 }
 
 struct Stat: Codable{
@@ -38,6 +64,8 @@ struct Stat: Codable{
 }
 
 struct ElementAbility: Codable {
+    let slot: Int
+    let is_hidden: Bool
     let ability: Ability
 }
 
