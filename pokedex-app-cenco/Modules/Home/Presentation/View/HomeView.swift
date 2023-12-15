@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+
     var body: some View {
         NavigationView {
             ScrollView {
+                
                 HStack {
                     Spacer()
                     Text("Pokedex")
@@ -56,7 +58,6 @@ struct HomeView: View {
                     Spacer()
                 }
             }
-            
         }
         .navigationTitle("Pokedex")
         .foregroundColor(.white)

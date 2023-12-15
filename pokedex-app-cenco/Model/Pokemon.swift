@@ -10,9 +10,14 @@ import SwiftUI
 
 //==============================
 
-struct PokemonDetails2: Codable {
-    let types: [TypeElement]
-    let sprites: Sprites
+struct Pokemon: Codable{
+    var id: Int? {
+        return Int(url.split(separator: "/").last?.description ?? "0")
+    }
+    let name: String
+    let url: String
+    
+    static var samplePokemon = Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
 }
 
 struct PokemonDetails: Codable {
@@ -27,7 +32,6 @@ struct PokemonDetails: Codable {
     let species: PokemonSpecies
 //    let pokemonSpecies: PokemonSpecies
 }
-
 
 // Estructura para decodificar los detalles de la especie del Pokémon
 struct PokemonSpeciesDetails: Codable {
@@ -62,7 +66,7 @@ struct Stat: Codable{
     let url: String
    
 }
-
+// ABILITIES --------------------
 struct ElementAbility: Codable {
     let slot: Int
     let is_hidden: Bool
@@ -86,6 +90,7 @@ struct Type: Codable {
     let url: String
 }
 
+// Images --------------------
 struct Sprites: Codable {
     let frontDefault: String?
     let other: [String: FrontDefaultImage]
@@ -123,50 +128,5 @@ struct PokemonResponse: Codable {
     let count: Int
     let next: String
     let results: [Pokemon]
-}
-
-// Codigo para poder poner colores hexadecimales
-extension Color {
-    init(hex: String) {
-        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-
-        var rgb: UInt64 = 0
-
-        Scanner(string: hexSanitized).scanHexInt64(&rgb)
-
-        let red = Double((rgb & 0xFF0000) >> 16) / 255.0
-        let green = Double((rgb & 0x00FF00) >> 8) / 255.0
-        let blue = Double(rgb & 0x0000FF) / 255.0
-
-        self.init(red: red, green: green, blue: blue)
-    }
-}
-
-func backgroundColor(forType type:String)-> Color{
-    switch type{
-    case "fire": return Color(hex:"#F7786A")
-    case "poison": return Color(hex:"#ad6dc6")
-    case "water": return Color(hex:"#58abf6")
-    case "electric": return Color(hex:"#fece4a")
-    case "psychic": return Color(hex:"#d660a7")
-    case "ground": return Color(hex:"#CA8079")
-    case "normal": return Color(hex:"#b6aac4")
-    case "flying": return Color(hex:"#94B2C7")
-    case "fairy": return Color(hex:"#edafdd")
-    case "bug": return Color(hex:"#73a07d")
-    case "grass": return Color(hex:"#61E3C3")
-    default : return Color(hex:"#aaaaaa")
-    }
-}
-
-struct Pokemon: Codable{
-    var id: Int? {
-        return Int(url.split(separator: "/").last?.description ?? "0")
-    }
-    let name: String
-    let url: String
-    
-    static var samplePokemon = Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
 }
 

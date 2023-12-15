@@ -9,16 +9,14 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var favoritesManager = FavoritesManager()
-    
-    
-    init() {
-        // Establece el color de los ítems del tab no seleccionados
-        UITabBar.appearance().unselectedItemTintColor = UIColor.black
 
-        // Establece el color de fondo del TabBar si es necesario
-        UITabBar.appearance().backgroundColor = UIColor.white
-    }
-    
+//    init() {
+//        // Configuración de apariencia principal
+//        UITabBar.appearance().barTintColor = UIColor.black
+//        UITabBar.appearance().tintColor = UIColor.white
+//        UITabBar.appearance().unselectedItemTintColor = UIColor.gray
+//    }
+
     var body: some View {
         TabView {
             
@@ -32,8 +30,10 @@ struct MainView: View {
                     Label("Favoritos", systemImage: "star")
                 }.environmentObject(favoritesManager)
         }
-        .accentColor(Color.customIndigoMedium)
-        .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+        // un color distino al fondo del pokemons para que se pueda ver siempre sin ser blanco porque si es blanco no se ve
+        .accentColor(Color(.black))
+        
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

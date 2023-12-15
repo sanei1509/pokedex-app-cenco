@@ -10,9 +10,9 @@ import SwiftUI
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
 
-    init() {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-    }
+//    init() {
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+//    }
     
     var body: some View {
         NavigationView {
@@ -28,7 +28,7 @@ struct FavoritesView: View {
                 .padding(.vertical, 20)
             }
             //cambiar el color de "Mis favoritos"
-            .foregroundColor(.white)
+            .foregroundColor(.black)
             .navigationTitle("Mis favoritos")
             .background(Color(.white)) // Fondo gris oscuro
             .onAppear{

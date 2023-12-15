@@ -84,9 +84,6 @@ class PokemonCardViewModel : ObservableObject {
     }
     
     
-
-    
-    
     func loadImage(from url: URL) {
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let data = data {
@@ -103,22 +100,6 @@ class PokemonCardViewModel : ObservableObject {
                 print("Error loading image: \(error)")
             }
         }.resume()
-    }
-    
-
-    func backgroundColor(forType type:String)-> UIColor{
-        switch type{
-        case "fire": return .systemRed
-        case "poison": return .systemGreen
-        case "water": return .systemBlue
-        case "electric": return .systemYellow
-        case "psychic": return .systemPurple
-        case "ground": return .systemGray
-        case "normal": return .systemOrange
-        case "flying": return .systemBrown
-        case "fairy": return .systemPink
-        default : return .systemIndigo
-        }
     }
     
 }

@@ -25,12 +25,14 @@ struct PokemonDetalle: View {
         NavigationView {
             ZStack {
                 Color(backgroundColor(forType: viewModel.pokemonDetails?.types.first?.type.name ?? "default")).ignoresSafeArea()
-                ScrollView{
-                    // Encabezado con nombre, tipo y corazón
-                    headerDetailView
-                    imageOfPokemonDetailView
-                    //AREA / SECCION BLANCA POKEMON
-                    detailPokemonWhiteView
+                GeometryReader { geometry in
+                    ScrollView {
+                        // Encabezado con nombre, tipo y corazón
+                        headerDetailView
+                        imageOfPokemonDetailView
+                        //AREA / SECCION BLANCA POKEMON
+                        detailPokemonWhiteView
+                    }
                 }
             }.onAppear{
                 viewModel.loadPokemonDetails()
@@ -161,83 +163,70 @@ struct PokemonDetalle: View {
 //                .foregroundColor(.black)
             // Espacio de SIZE
             sizeView
+            
+            //Barras de estadisticas
+            VStack(alignment: .leading) {
+                Text("Stats / Skills ")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .padding(.bottom, 20)
+            }
+            .padding(.top, 30)
             HStack (alignment: .center) {
                 Spacer()
                 VStack {
                     VStack (alignment: .center) {
-                        Text("Stats")
-                            .font(.system(size: 16))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                        //Barras de estadisticas
-                        VStack{
-
-                            
-                           
-                            HStack {
-                                Text("EXP")
+                        VStack {
+                            VStack(alignment: .leading) {
+                                Text("EXP".capitalized)
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 12))
                                     .foregroundColor(.black)
-                                    .frame(width: 50)
-                                
-                                Rectangle()
-                                    .fill(Color.yellow)
-                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
-                                    .cornerRadius(10)
-                                   
-                                Spacer()
-
-                                Text("\(viewModel.pokemonDetails?.base_experience ?? 0)/\(300)")
-                                    .font(.caption)
-                            }
+                                    .frame(maxWidth: .infinity)
+                                HStack {
+                                    Rectangle()
+                                        .fill(Color.yellow)
+                                        .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 500), height: 10)
+                                        .cornerRadius(10)
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(viewModel.pokemonDetails?.base_experience ?? 0)/\(500)")
+                                        .font(.system(size: 12))
+                                        .fontWeight(.bold)
+                                        .font(.caption)
+                                        .foregroundColor(.black)
+                                }
+                            }.padding(.horizontal, 10)
                             
                             if let estadisticas = viewModel.pokemonDetails?.stats{
+                                // ForEach para recorrer las estadisticas y mostrarlas
                                 ForEach(estadisticas, id: \.stat.name){stat in
-                                    Text(stat.stat.name).foregroundColor(.black)
-                                    Text(stat.stat.url).foregroundColor(.black)
+                                    
+                                    VStack{
+                                        Text(stat.stat.name.capitalized(with: nil))
+                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                            .font(.system(size: 12))
+                                            .foregroundColor(.black)
+                                        //lo que ocupe la palabra
+                                            .frame(maxWidth: .infinity)
+                                        HStack {
+                                            Rectangle()
+                                                .fill(Color.yellow)
+                                                .frame(width: barWidth(for: stat.base_stat, max: 150), height: 10)
+                                                .cornerRadius(10)
+                                            Spacer()
+                                            Text("\(stat.base_stat)/\(100)")
+                                                .font(.system(size: 12))
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.black)
+                                        }
+                                    }.padding(.horizontal, 10)
+                    
                                 }
                             }
-                            
-                            
-//                            HStack {
-//                                Text("HP")
-//                                    .foregroundColor(.black)
-//                                    .frame(width: 50)
-//                                Rectangle()
-//                                    .fill(Color.red)
-//                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
-//                                    .cornerRadius(10)
-//                                Spacer()
-//                                Text("100\(300)")
-//                                    .font(.caption)
-//                            }
-//                            
-//                            HStack {
-//                                Text("ATK")
-//                                    .foregroundColor(.black)
-//                                    .frame(width: 50)
-//                                Rectangle()
-//                                    .fill(Color.purple)
-//                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300 ), height: 10)
-//                                    .cornerRadius(10)
-//                                Spacer()
-//                                Text("100\(300)")
-//                                    .font(.caption)
-//                            }
-//                            
-//                            HStack {
-//                                Text("DEF")
-//                                    .foregroundColor(.black)
-//                                    .frame(width: 50)
-//                                Rectangle()
-//                                    .fill(Color.brown)
-//                                    .frame(width: barWidth(for: viewModel.pokemonDetails?.base_experience ?? 0, max: 300), height: 10)
-//                                    .cornerRadius(10)
-//                                Spacer()
-//                                Text("100\(300)")
-//                                    .font(.caption)
-//                            }
                         }
-                        
                     }.padding(10)
                     VStack (alignment: .center) {
                         Text("Abilities")
@@ -264,7 +253,7 @@ struct PokemonDetalle: View {
                 }
                 Spacer()
             }
-            .padding(.vertical)
+            .padding(.bottom, 20)
         }
         .padding(.bottom, 80)
         .padding()
@@ -276,7 +265,7 @@ struct PokemonDetalle: View {
     
     private func barWidth(for value: Int, max maxValue: Int) -> CGFloat {
         let screenWidth = UIScreen.main.bounds.width - 40 // Ajustar según el padding deseado
-        let fraction = CGFloat(value) / CGFloat(maxValue )
+        let fraction = CGFloat(value) / CGFloat(maxValue)
         return fraction * screenWidth
     }
     // ============
