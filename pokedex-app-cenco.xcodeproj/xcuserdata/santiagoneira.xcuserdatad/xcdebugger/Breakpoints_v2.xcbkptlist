@@ -310,8 +310,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
             endingLineNumber = "14"
-            landmarkName = "body"
-            landmarkType = "24">
+            landmarkName = "PokemonListado"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "906BB84F-D81E-4FEA-9105-8415E933E950 - 7db5b4c0c02b5459"
@@ -358,8 +358,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15"
-            landmarkName = "body"
-            landmarkType = "24">
+            landmarkName = "PokemonListado"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "4263557F-FDF2-4585-AC68-F252E91B4E9C - 7db5b4c0c02b5459"
@@ -406,8 +406,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
             endingLineNumber = "16"
-            landmarkName = "body"
-            landmarkType = "24">
+            landmarkName = "PokemonListado"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "F1BDE055-75E9-435E-94C4-35DA7E71A7E7 - a26e4eca4f526640"
