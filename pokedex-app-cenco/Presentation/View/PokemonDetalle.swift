@@ -174,6 +174,7 @@ struct PokemonDetalle: View {
             }
             .padding(.top, 30)
             HStack (alignment: .center) {
+                
                 Spacer()
                 VStack {
                     VStack (alignment: .center) {
@@ -228,32 +229,45 @@ struct PokemonDetalle: View {
                             }
                         }
                     }.padding(10)
-                    VStack (alignment: .center) {
-                        Text("Abilities")
-                            .font(.system(size: 16))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-
-                        VStack{
-                            // Comprueba si hay habilidades disponibles y luego las lista todas
-                            if let abilities = viewModel.pokemonDetails?.abilities {
-                                ForEach(abilities, id: \.ability.name) { ability in
-                                    Text(ability.ability.name.capitalized)
-                                        .foregroundColor(.black)
-                                    
-                                }
-                            } else {
-                                // En caso de que no haya habilidades, muestra un texto predeterminado
-                                Text("Sin habilidad")
-                                    .foregroundColor(.black)
-                            }
-                        }
-
-                    }.padding(10)
                 }
+
                 Spacer()
             }
             .padding(.bottom, 20)
+            //Listado de habilidades / abilities
+            
+            VStack(alignment: .leading) {
+                Text("Abilities")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .padding(.bottom, 20)
+            }
+            HStack (alignment: .center) {
+                Spacer()
+ 
+
+                //Barras de Abilities
+                VStack (alignment: .center) {
+                    VStack{
+                        // Comprueba si hay habilidades disponibles y luego las lista todas
+                        if let abilities = viewModel.pokemonDetails?.abilities {
+                            ForEach(abilities, id: \.ability.name) { ability in
+                                Text(ability.ability.name.capitalized)
+                                    .foregroundColor(.black)
+                                
+                            }
+                        } else {
+                            // En caso de que no haya habilidades, muestra un texto predeterminado
+                            Text("Sin habilidad")
+                                .foregroundColor(.black)
+                        }
+                    }
+
+                }.padding(20)
+                
+                Spacer()
+            }.padding(.vertical, 20)
         }
         .padding(.bottom, 80)
         .padding()
