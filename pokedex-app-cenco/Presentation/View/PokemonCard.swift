@@ -11,16 +11,12 @@ struct PokemonCard: View {
     
     // Estructura para almacenar los detalles del Pokémon
     init(pokemon: Pokemon) {
-        //        self.pokemon = pokemon
         self.viewModel = PokemonCardViewModel(pokemon: pokemon)
     }
     
     var body: some View {
         ZStack{
-            //esto es lo que bugueaba el fondo de mi tarjeta
-//            Color(.white).opacity(0.9).ignoresSafeArea(.all)
-//            Color("ColorPrueba", bundle: nil)  definido en assets
-            //CARD
+            
             ZStack{
                 VStack{
                     if viewModel.isLoading {
@@ -35,10 +31,12 @@ struct PokemonCard: View {
                 }
                 
             }
+
             .padding(.top, 8).padding(.bottom, 10).padding(.horizontal, 8)
             .background(Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")))
-            .shadow(color: Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")).opacity(0.5), radius: 30, x: 5.0, y:5.0)
-            .cornerRadius(18)
+
+            .cornerRadius(20)
+
             //POKEBOLE IN THE BACKGROUND
             ZStack{
                 Image("vector")
@@ -54,7 +52,8 @@ struct PokemonCard: View {
         .onAppear{
             viewModel.loadPokemonDetails()
         }
-    // END BODY the nex
+        .shadow(color: Color(backgroundColor(forType: viewModel.pokemonDetails?.types[0].type.name ?? "default")).opacity(0.9), radius: 10, x: 0, y: 0)
+    // END BODY the next
     }
     // COMPONENTS OF DESIGN
     private var headerView: some View {
